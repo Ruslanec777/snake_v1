@@ -2,6 +2,7 @@
 using System.Threading;
 using static snake_v1.Models.Direction;
 using static snake_v1.Models.MainSnake;
+using static snake_v1.Models.GameSpeedController;
 
 namespace snake_v1.Models
 {
@@ -10,12 +11,14 @@ namespace snake_v1.Models
         public static void Stert()
         {
             Console.CursorVisible = false;
-            Point point = new Point(5, 20, '+');
-
+            currentDirection = Enums.MoveDirection.Right;
+            MainSnakeInical();
 
             while (true)
             {
                 Console.Clear();
+                Console.CursorVisible = false;
+
                 //Console.Clear();
                 if (Console.KeyAvailable)
                 {
@@ -23,7 +26,8 @@ namespace snake_v1.Models
                 }
 
                 SnakeMove();
-                Thread.Sleep(60);
+
+                ControlledPause();
 
             }
         }

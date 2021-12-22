@@ -12,11 +12,15 @@ namespace snake_v1.Models
         public int X { get; set; }
         public int Y { get; set; }
         public char Symbol { get; set; }
+        /// <summary>
+        /// Текущее направление движения звена змейки
+        /// </summary>
+        public MoveDirection CurrentDirectionPoint;
 
         public Point(int x, int y, char symbol='+')
         {
             X = x;
-            this.Y = y;
+            Y = y;
             Symbol = symbol;
         }
 
