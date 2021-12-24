@@ -149,5 +149,23 @@ namespace snake_v1.Models
                 }
             }
         }
+
+        private void TouchControl(Point point, MoveDirection direction)
+        {
+            switch (direction)
+            {
+                case MoveDirection.Up:
+                    
+                    break;
+                case MoveDirection.Right:
+                    break;
+                case MoveDirection.Down:
+                    break;
+                case MoveDirection.Left:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
