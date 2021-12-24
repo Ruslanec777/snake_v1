@@ -31,7 +31,6 @@ namespace snake_v1.Models
                 }
                 SnakeAddItemBody(Snake[Snake.Count - 1]);
                 Snake[i].CurrentDirectionPoint = currentDirection;
-
             }
         }
 
@@ -66,13 +65,11 @@ namespace snake_v1.Models
                     break;
                 default:
                     break;
-
             }
         }
 
         private static void SnakeAddItemSpace(Point point)
         {
-
             switch (point.CurrentDirectionPoint)
             {
                 case MoveDirection.Up:
@@ -89,7 +86,6 @@ namespace snake_v1.Models
                     break;
                 default:
                     break;
-
             }
         }
 
@@ -123,8 +119,7 @@ namespace snake_v1.Models
                     Snake[i].Move(currentDirection, 1);
                     continue;
                 }
-
-                
+               
                 // перемещаем элемент на место предыдущего 
                 char currentSymbol = Snake[i].Symbol;
 

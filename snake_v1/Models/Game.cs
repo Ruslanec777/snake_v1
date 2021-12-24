@@ -21,8 +21,8 @@ namespace snake_v1.Models
 
                 //Console.Clear();
                 if (Console.KeyAvailable)
-                {
-                    ChangeDirection(Console.ReadKey().Key);
+                {                    
+                   ChangeDirection(Console.ReadKey(true).Key);                  
                 }
 
                 SnakeMove();

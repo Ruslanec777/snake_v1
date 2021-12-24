@@ -24,13 +24,13 @@ namespace snake_v1.Models
                     }
                     break;
                 case ConsoleKey.S:
-                    if (currentDirection != MoveDirection.Down)
+                    if (currentDirection != MoveDirection.Up)
                     {
                         currentDirection = MoveDirection.Down;
                     }
                     break;
                 case ConsoleKey.W:
-                    if (currentDirection != MoveDirection.Up)
+                    if (currentDirection != MoveDirection.Down)
                     {
                         currentDirection = MoveDirection.Up;
                     }
@@ -38,7 +38,9 @@ namespace snake_v1.Models
                 default:
                     break;
             }
+            
         }
+        
 
     }
 }
