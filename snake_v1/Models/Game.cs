@@ -16,7 +16,7 @@ namespace snake_v1.Models
 
             while (true)
             {
-                Console.Clear();
+                //Console.Clear();
                 Console.CursorVisible = false;
 
                 //Console.Clear();

@@ -12,16 +12,19 @@ namespace snake_v1.Models
         public int X { get; set; }
         public int Y { get; set; }
         public char Symbol { get; set; }
-        /// <summary>
-        /// Текущее направление движения звена змейки
-        /// </summary>
-        public MoveDirection CurrentDirectionPoint;
+        internal MoveDirection CurrentDirectionPoint { get; set; }
 
-        public Point(int x, int y, char symbol='+')
+        public Point(int x, int y, char symbol)
         {
             X = x;
             Y = y;
             Symbol = symbol;
+        }
+
+        public Point(int x, int y, char symbol, MoveDirection currentDirectionPoint) 
+              : this(x, y, symbol)
+        {
+            CurrentDirectionPoint = currentDirectionPoint;
         }
 
         public void Move(MoveDirection direction,int count)
@@ -29,13 +32,13 @@ namespace snake_v1.Models
             switch (direction)
             {
                 case MoveDirection.Up:
-                    Y += count;
+                    Y -= count;
                     break;
                 case MoveDirection.Right:
                     X += count;
                     break;
                 case MoveDirection.Down:
-                    Y -= count;
+                    Y += count;
                     break;
                 case MoveDirection.Left:
                     X -= count;
