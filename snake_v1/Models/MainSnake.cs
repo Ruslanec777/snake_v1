@@ -50,7 +50,6 @@ namespace snake_v1.Models
         /// <param name="point">элемент к которому цепляется новое звено</param>
         private static void SnakeAddItemBody(Point point)
         {
-
             switch (point.CurrentDirectionPoint)
             {
                 case MoveDirection.Up:
@@ -110,8 +109,7 @@ namespace snake_v1.Models
 
         private static void SnakeMovesNextStep()
         {
-            Point HistoryPoint = null;
-
+            Point pointForNextStep = null;
             Point tempPoint;
 
             for (int i = 0; i < Snake.Count; i++)
@@ -121,36 +119,36 @@ namespace snake_v1.Models
 
                 if (i == 0)
                 {
-                    HistoryPoint = new Point(Snake[i].X, Snake[i].Y, Snake[i].Symbol);
+                    pointForNextStep = new Point(Snake[i].X, Snake[i].Y, Snake[i].Symbol);
                     Snake[i].Move(currentDirection, 1);
                     continue;
                 }
 
-                tempPoint = new Point(Snake[i].X, Snake[i].Y, Snake[i].Symbol, );
+                
+                // перемещаем элемент на место предыдущего 
+                char currentSymbol = Snake[i].Symbol;
 
-                Snake[i] = HistoryPoint;
+                tempPoint = Snake[i];
+
+                Snake[i] = pointForNextStep;
                 Snake[i].Symbol = tempPoint.Symbol;
 
-                //if (i == 1)
-                //{
-                //    Snake[i].Symbol = MainSnake.snakeBody;
-                //}
+                pointForNextStep = tempPoint;
 
-                HistoryPoint = tempPoint;
-
-                if (HistoryPoint.X > Snake[i].X)
+                // определяем посдеднее направление перемещения элемента
+                if (pointForNextStep.X > Snake[i].X)
                 {
                     Snake[i].CurrentDirectionPoint = MoveDirection.Left;
                 }
-                else if (HistoryPoint.X < Snake[i].X)
+                else if (pointForNextStep.X < Snake[i].X)
                 {
                     Snake[i].CurrentDirectionPoint = MoveDirection.Right;
                 }
-                else if (HistoryPoint.Y > Snake[i].Y)
+                else if (pointForNextStep.Y > Snake[i].Y)
                 {
                     Snake[i].CurrentDirectionPoint = MoveDirection.Down;
                 }
-                else if (HistoryPoint.Y < Snake[i].Y)
+                else if (pointForNextStep.Y < Snake[i].Y)
                 {
                     Snake[i].CurrentDirectionPoint = MoveDirection.Up;
                 }

@@ -10,13 +10,13 @@ namespace snake_v1.Models
     {
         public static void Stert()
         {
+            Console.Clear();
             Console.CursorVisible = false;
             currentDirection = Enums.MoveDirection.Right;
             MainSnakeInical();
 
             while (true)
             {
-                //Console.Clear();
                 Console.CursorVisible = false;
 
                 //Console.Clear();

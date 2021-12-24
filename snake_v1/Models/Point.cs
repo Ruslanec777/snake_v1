@@ -14,10 +14,15 @@ namespace snake_v1.Models
         public char Symbol { get; set; }
         internal MoveDirection CurrentDirectionPoint { get; set; }
 
-        public Point(int x, int y, char symbol)
+        public Point(int x, int y)
         {
             X = x;
             Y = y;
+        }
+
+        public Point(int x, int y, char symbol)
+              : this(x, y)
+        {
             Symbol = symbol;
         }
 
