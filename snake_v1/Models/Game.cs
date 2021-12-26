@@ -1,35 +1,51 @@
 ﻿using System;
 using System.Threading;
 using static snake_v1.Models.Direction;
-using static snake_v1.Models.MainSnake;
+using static snake_v1.Models.Snake;
 using static snake_v1.Models.GameSpeedController;
 
 namespace snake_v1.Models
 {
-    class Game
+    static class Game
     {
+        private static Snake _snake;
+
         public static void Stert()
         {
-            Console.Clear();
-            Console.CursorVisible = false;
-            currentDirection = Enums.MoveDirection.Right;
-            MainSnakeInical();
+
+            initGame();
 
             while (true)
             {
-                Console.CursorVisible = false;
+                _snake.Move();
 
                 //Console.Clear();
                 if (Console.KeyAvailable)
-                {                    
-                   ChangeDirection(Console.ReadKey(true).Key);                  
+                {
+                    _snake.ChangeDirection(Console.ReadKey(true).Key);
                 }
 
-                SnakeMove();
 
                 ControlledPause();
 
             }
+        }
+
+        private static void initGame()
+        {
+            Console.Clear();
+            Console.CursorVisible = false;
+            currentDirection = Enums.MoveDirection.Right;
+            Console.SetWindowSize(100, 50);
+            initSnake();
+
+        }
+
+        private static void initSnake()
+        {
+            var teil = new Point(20, 20, '*', ConsoleColor.Green);
+            _snake = new Snake(teil, 5, Enums.MoveDirection.Right);
+            _snake.Draw();
         }
     }
 }
