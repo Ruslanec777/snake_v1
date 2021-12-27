@@ -14,14 +14,15 @@ namespace snake_v1.Models
         private IPoint _head;
         private IPoint _tail;
 
-        public static char snakeBody = '*';
+        public static char snakeHead = '0';
 
-        private  MoveDirection _direction;
+        private MoveDirection _direction;
 
         public Snake(IPoint tail, int length, MoveDirection direction) : base(ConsoleColor.Green)
         {
             _tail = tail;
             _direction = direction;
+
 
             Init(length);
         }
@@ -35,6 +36,7 @@ namespace snake_v1.Models
             {
                 IPoint point = (IPoint)_points.Last().Clone();
                 point.Move(_direction, 1);
+
                 _points.Add(point);
             }
 
@@ -178,7 +180,8 @@ namespace snake_v1.Models
         {
             DeleteTail();
             AddHead();
-            _head.Draw();
+            //_head.Draw();
+            this.Draw();
         }
 
         private void DeleteTail()
@@ -192,18 +195,23 @@ namespace snake_v1.Models
         {
 
             _head = (IPoint)_points.Last().Clone();
+            ReplacingOldHeadSymbol();
             _head.Move(_direction, 1);
             _points.Add(_head);
-            
+
         }
 
+        private void ReplacingOldHeadSymbol()
+        {
+            _points.Last().Symbol = _tail.Symbol;
+        }
 
         private void TouchControl(Point point, MoveDirection direction)
         {
             switch (direction)
             {
                 case MoveDirection.Up:
-                    
+
                     break;
                 case MoveDirection.Right:
                     break;
@@ -216,7 +224,7 @@ namespace snake_v1.Models
             }
         }
 
-        public  void ChangeDirection(ConsoleKey key)
+        public void ChangeDirection(ConsoleKey key)
         {
             switch (key)
             {

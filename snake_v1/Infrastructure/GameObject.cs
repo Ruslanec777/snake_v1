@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
+
+    /// <summary>
+    /// Умеет рисовать объект и удалять ,принимает цвет
+    /// </summary>
     abstract class GameObject
     {
         protected List<IPoint> _points;

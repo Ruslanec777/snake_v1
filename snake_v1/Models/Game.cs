@@ -24,8 +24,6 @@ namespace snake_v1.Models
                 {
                     _snake.ChangeDirection(Console.ReadKey(true).Key);
                 }
-
-
                 ControlledPause();
 
             }
@@ -36,7 +34,7 @@ namespace snake_v1.Models
             Console.Clear();
             Console.CursorVisible = false;
             currentDirection = Enums.MoveDirection.Right;
-            Console.SetWindowSize(100, 50);
+            Console.SetWindowSize(50, 30);
             initSnake();
 
         }
