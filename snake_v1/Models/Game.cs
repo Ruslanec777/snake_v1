@@ -3,12 +3,22 @@ using System.Threading;
 using static snake_v1.Models.Direction;
 using static snake_v1.Models.Snake;
 using static snake_v1.Models.GameSpeedController;
+using System.Collections.Generic;
+using snake_v1.Infrastructure;
+using System.Drawing;
 
 namespace snake_v1.Models
 {
     static class Game
     {
         private static Snake _snake;
+        private static List<GameObject> _map;
+
+        private  const byte _windowHeight= 100;
+        private const byte _windowWidth= 100;
+
+        
+
 
         public static void Stert()
         {
@@ -17,6 +27,7 @@ namespace snake_v1.Models
 
             while (true)
             {
+                Console.CursorVisible = false;
                 _snake.Move();
 
                 //Console.Clear();
@@ -34,8 +45,11 @@ namespace snake_v1.Models
             Console.Clear();
             Console.CursorVisible = false;
             currentDirection = Enums.MoveDirection.Right;
-            Console.SetWindowSize(50, 30);
+            Console.SetWindowSize(_windowWidth, _windowHeight);
             initSnake();
+            _map = new List<GameObject>();
+            //_map.Add(_snake);
+            Level1.initLevel(_map);
 
         }
 
