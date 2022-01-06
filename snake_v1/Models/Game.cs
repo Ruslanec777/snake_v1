@@ -14,12 +14,14 @@ namespace snake_v1.Models
     {
         private static Snake _snake;
 
-        private  const byte _windowHeight= 30;
-        private const byte _windowWidth= 50;
+        private  const byte _windowHeight= 40;
+        private const byte _windowWidth= 100;
 
         private static IMap _map;
 
         private static IMapGenerator _mapGenerator;
+
+        private static IMenu _menu;
 
         static Game()
         {
@@ -54,7 +56,7 @@ namespace snake_v1.Models
             Console.CursorVisible = false;
             currentDirection = Enums.MoveDirection.Right;
 
-            //Console.SetWindowSize(_windowWidth, _windowHeight);
+            Console.SetWindowSize(_windowWidth, _windowHeight);
 
             //Console.SetWindowSize(50, 30);
             initSnake();
