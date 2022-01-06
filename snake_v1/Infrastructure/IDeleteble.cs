@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    interface IDeleteble
+    public interface IDeleteble
     {
         void Delete();
     }

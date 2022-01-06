@@ -1,4 +1,5 @@
-﻿using System;
+﻿using snake_v1.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-   public interface IDrawble
+    interface IMapGenerator
     {
-        void Draw();
+        IMap Generate(MapType type, int height, int width, int x, int y);
     }
 }

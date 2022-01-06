@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Enums
 {
-    enum MoveDirection
+    public enum MoveDirection
     {
         Up,
         Right,

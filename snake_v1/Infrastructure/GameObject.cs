@@ -11,7 +11,7 @@ namespace snake_v1.Infrastructure
     /// <summary>
     /// Умеет рисовать объект и удалять ,принимает цвет
     /// </summary>
-    abstract class GameObject :IGameObject
+   public abstract class GameObject :IGameObject
     {
         protected List<IPoint> _points;
         protected ConsoleColor _color;
@@ -40,13 +40,11 @@ namespace snake_v1.Infrastructure
             foreach (var point in _points)
             {
                 point.Delete();
-            }
-            
+            }            
         }
 
         public bool IsHit(IPoint point)
         {
-
             return _points.Any(x => x.IsHit(point));
         }
 

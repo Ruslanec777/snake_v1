@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Enums
 {
-    enum ItemTypes
+    enum MapType
     {
-        Frut = 'F',
-        wall= 'H',
-
+        Box
     }
 }

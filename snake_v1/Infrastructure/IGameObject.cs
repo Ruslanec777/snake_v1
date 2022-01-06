@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    interface IGameObject:IDrawble
+    public interface IGameObject:IDrawble
     {
         /// <summary>
         /// соприкосновение с точкой 
         /// </summary>
         /// <param name="point"></param>
-        bool IsHit(IPoint point);
+       public bool IsHit(IPoint point);
         /// <summary>
         /// соприкосновение с фигуруй
         /// </summary>
         /// <param name="gameObject"></param>
-        bool IsHit(IGameObject gameObject);
+       public bool IsHit(IGameObject gameObject);
     }
 }

@@ -63,7 +63,8 @@ namespace snake_v1.Models
 
         public bool IsHit(IPoint point)
         {
-            throw new NotImplementedException();
+            return X == point.X && Y == point.Y;
+                
         }
 
         public void Draw()

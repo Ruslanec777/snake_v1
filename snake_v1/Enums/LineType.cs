@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Enums
 {
-    enum ItemTypes
+    public enum LineType
     {
-        Frut = 'F',
-        wall= 'H',
-
+        Vertical ,
+        Horizontal
     }
 }
