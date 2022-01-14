@@ -9,17 +9,13 @@ namespace snake_v1.Infrastructure
 {
     public interface IPoint : ICloneable, IDrawble, IDeleteble
     {
-        int X { get; }
-        int Y { get; }
+        public int X { get; }
+        public int Y { get; }
 
         ConsoleColor Color { get; set; }
 
         char Symbol { get; set; }
 
         void Move(MoveDirection direction, int count);
-
-
-        bool IsHit(IPoint point);
-
     }
 }

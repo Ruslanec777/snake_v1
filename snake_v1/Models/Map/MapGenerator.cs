@@ -1,6 +1,6 @@
 ﻿using snake_v1.Enums;
 using snake_v1.Infrastructure;
-using snake_v1.Models.GameItems;
+using snake_v1.Models.GeometricFigurs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,20 +36,21 @@ namespace snake_v1.Models.Map
 
         private IMap GenerateBox(int height, int width)
         {
-            var upWall = new Line(_x + 1, _y, width, _horizontalChar, LineType.Horizontal, ConsoleColor.Red);
-            var rightWall = new Line(_x + width, _y + 1, height, _verticalChar, LineType.Vertical, ConsoleColor.Red);
-            var downWall = new Line(_x, _y + height, width, _horizontalChar, LineType.Horizontal, ConsoleColor.Red);
-            var leftWall = new Line(_x, _y + 1, height, _verticalChar, LineType.Vertical, ConsoleColor.Red);
+            //var upWall = new Line(_x + 1, _y, width, _horizontalChar, LineType.Horizontal, ConsoleColor.Red);
+            //var rightWall = new Line(_x + width, _y + 1, height, _verticalChar, LineType.Vertical, ConsoleColor.Red);
+            //var downWall = new Line(_x, _y + height, width, _horizontalChar, LineType.Horizontal, ConsoleColor.Red);
+            //var leftWall = new Line(_x, _y + 1, height, _verticalChar, LineType.Vertical, ConsoleColor.Red);
+            //var anglRightDown = new Angl(_x, _y, AngleType.RightDown, ConsoleColor.Red);
+            //var anglLeftDown = new Angl(_x + width, _y, AngleType.LeftDown, ConsoleColor.Red);
+            //var anglLeftUp = new Angl(_x + width, _y + height, AngleType.LeftUp, ConsoleColor.Red);
+            //var anglRightUp = new Angl(_x, _y + height, AngleType.RightUp, ConsoleColor.Red);
+            ////var mapElements = new List<GameObject>() {anglRightDown, anglLeftDown, anglLeftUp, anglRightUp };
 
-            var anglRightDown = new Angl(_x, _y, AngleType.RightDown, ConsoleColor.Red);
-            var anglLeftDown = new Angl(_x + width, _y, AngleType.LeftDown, ConsoleColor.Red);
-            var anglLeftUp = new Angl(_x + width, _y + height, AngleType.LeftUp, ConsoleColor.Red);
-            var anglRightUp = new Angl(_x, _y + height, AngleType.RightUp, ConsoleColor.Red);
 
-            //var mapElements = new List<GameObject>() {anglRightDown, anglLeftDown, anglLeftUp, anglRightUp };
-            var mapElements = new List<GameObject>() { upWall, downWall, leftWall, rightWall, anglRightDown, anglLeftDown, anglLeftUp, anglRightUp };
+            //var mapElements = new List<GameObject>() { upWall, downWall, leftWall, rightWall, anglRightDown, anglLeftDown, anglLeftUp, anglRightUp };
+            GameObject borders = new GameObject(new Rectangle(_x, _y, height, width, ConsoleColor.Red));
 
-            return new Map("Box", height, width, mapElements);
+            return new Map("Box", height, width, borders);
         }
     }
 }

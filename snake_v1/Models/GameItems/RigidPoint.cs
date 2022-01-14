@@ -1,14 +1,12 @@
-﻿using snake_v1.Infrastructure;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace snake_v1.Models
+namespace snake_v1.Models.GameItems
 {
-    class Level1
+    class RigidPoint
     {
-
     }
 }

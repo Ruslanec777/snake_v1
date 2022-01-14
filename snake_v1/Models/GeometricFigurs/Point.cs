@@ -6,20 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace snake_v1.Models
+namespace snake_v1.Models.GeometricFigurs
 {
-    class Point: IPoint
+    public class Point : IPoint
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public  ConsoleColor Color { get; set; }
-        public char Symbol { get; set; }
-      
+        public ConsoleColor Color { get; set; } = ConsoleColor.Black;
+        public char Symbol { get; set; } = ' ';
+
+        //public int X => throw new NotImplementedException();
+
+        //public int Y => throw new NotImplementedException();
 
         public Point(int x, int y)
         {
-            X = x;
-            Y = y;
         }
 
         public Point(int x, int y, char symbol, ConsoleColor color)
@@ -29,7 +30,7 @@ namespace snake_v1.Models
             Color = color;
         }
 
-        public void Move(MoveDirection direction,int count)
+        public void Move(MoveDirection direction, int count)
         {
             switch (direction)
             {
@@ -64,7 +65,6 @@ namespace snake_v1.Models
         public bool IsHit(IPoint point)
         {
             return X == point.X && Y == point.Y;
-                
         }
 
         public void Draw()

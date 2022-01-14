@@ -28,11 +28,8 @@ namespace snake_v1.Models
             _mapGenerator = new MapGenerator();
         }
         
-
-
         public static void Stert()
         {
-
             initGame();
 
             while (true)

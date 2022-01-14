@@ -1,5 +1,5 @@
 ﻿using snake_v1.Infrastructure;
-using snake_v1.Models.GameItems;
+using snake_v1.Models.GeometricFigurs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +24,10 @@ namespace snake_v1.Models.Map
             Height = height;
             Width = width;
             Walls = walls;
+        }
+
+        public Map(int height, int width, string name, List<Point> points)
+        {
         }
 
         public void Draw()

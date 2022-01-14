@@ -10,11 +10,6 @@ namespace snake_v1.Models.GameItems
 {
     public class Line : GameObject
     {
-        //private char _symbolWall;
-
-        //private Point _point;
-
-
         public Line(int x, int y, int length, char symbol, LineType lineType, ConsoleColor color)
               : base(color)
         {
