@@ -17,5 +17,6 @@ namespace snake_v1.Infrastructure
         char Symbol { get; set; }
 
         void Move(MoveDirection direction, int count);
+
     }
 }

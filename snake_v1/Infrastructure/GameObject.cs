@@ -1,6 +1,4 @@
-﻿using snake_v1.Enums;
-using snake_v1.Infrastructure;
-using snake_v1.Models;
+﻿using snake_v1.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,20 +11,14 @@ namespace snake_v1.Infrastructure
     /// <summary>
     /// Умеет рисовать объект и удалять ,принимает цвет
     /// </summary>
-   public  class GameObject :GeometricFigure, IGameObject
+    abstract class GameObject 
     {
+        protected List<IPoint> _points;
         protected ConsoleColor _color;
 
-        public GameObject(GeometricFigure geometricFigure)
-                   :base (geometricFigure.X, geometricFigure.Y)
+        public GameObject(ConsoleColor color)
         {
-            Points = geometricFigure.Points;
-        }
-
-        public GameObject(GeometricFigure geometricFigure, ConsoleColor color)
-                   : base(geometricFigure.X ,geometricFigure.Y)
-        {
-            Points = geometricFigure.Points;
+            _points = new List<IPoint>();
             _color = color;
         }
 
@@ -34,41 +26,34 @@ namespace snake_v1.Infrastructure
         {
             Console.ForegroundColor = _color;
 
-            foreach (var point in Points)
+            foreach (var point in _points)
             {
                 point.Draw();
             }
 
             Console.ResetColor();
+
         }
 
         public void Delete()
         {
-            foreach (var point in Points)
+            foreach (var point in _points)
             {
                 point.Delete();
-            }            
+            }
+            
         }
 
-        public bool IsHit(IPoint point)
-        {
-            return Points.Any(x => x.IsHit(point));
-        }
+        //public bool IsHit(IPoint point)
+        //{
 
-        public bool IsHit(IGameObject gameObject)
-        {
-            return Points.Any(x => gameObject.IsHit(x));
-            // расписать forEach
-        }
+        //    return _points.Any(x => x.IsHit(point));
+        //}
 
-        public void Move(MoveDirection direction, int count)
-        {
-            throw new NotImplementedException();
-        }
-
-        public object Clone()
-        {
-            throw new NotImplementedException();
-        }
+        //public bool IsHit(IRigidBody gameObject)
+        //{
+        //    return _points.Any(x => gameObject.IsHit(x));
+        //    // расписать forEach
+        //}
     }
 }

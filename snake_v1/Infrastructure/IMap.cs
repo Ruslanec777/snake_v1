@@ -19,7 +19,7 @@ namespace snake_v1.Infrastructure
         /// <summary>
         /// соприкосновение с картой 
         /// </summary>
-        public bool IsHit(IGameObject gameObject);
+        public bool IsHit(IRigidBody gameObject);
 
     }
 }

@@ -6,30 +6,23 @@ using static snake_v1.Models.GameSpeedController;
 using System.Collections.Generic;
 using snake_v1.Infrastructure;
 using System.Drawing;
-using snake_v1.Models.Map;
 
 namespace snake_v1.Models
 {
     static class Game
     {
         private static Snake _snake;
+        private static List<GameObject> _map;
 
-        private  const byte _windowHeight= 40;
+        private  const byte _windowHeight= 100;
         private const byte _windowWidth= 100;
 
-        private static IMap _map;
-
-        private static IMapGenerator _mapGenerator;
-
-        private static IMenu _menu;
-
-        static Game()
-        {
-            _mapGenerator = new MapGenerator();
-        }
         
+
+
         public static void Stert()
         {
+
             initGame();
 
             while (true)
@@ -52,12 +45,11 @@ namespace snake_v1.Models
             Console.Clear();
             Console.CursorVisible = false;
             currentDirection = Enums.MoveDirection.Right;
-
             Console.SetWindowSize(_windowWidth, _windowHeight);
-
-            //Console.SetWindowSize(50, 30);
             initSnake();
-            initMap();
+            _map = new List<GameObject>();
+            //_map.Add(_snake);
+            Level1.initLevel(_map);
 
         }
 
@@ -67,12 +59,5 @@ namespace snake_v1.Models
             _snake = new Snake(teil, 5, Enums.MoveDirection.Right);
             _snake.Draw();
         }
-
-        private static void initMap()
-        {
-            _map = _mapGenerator.Generate(Enums.MapType.Box, 30, 90, 5, 5);
-            _map.Draw();
-        }
-
     }
 }
