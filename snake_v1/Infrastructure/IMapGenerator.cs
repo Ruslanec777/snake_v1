@@ -9,6 +9,6 @@ namespace snake_v1.Infrastructure
 {
     interface IMapGenerator
     {
-        IMap Generate(MapType type, int height, int width, int x, int y);
+        IMap Generate( MapType type, int x, int y, int height, int width, ConsoleColor color);
     }
 }

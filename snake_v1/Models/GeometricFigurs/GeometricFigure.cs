@@ -1,19 +1,21 @@
 ﻿using snake_v1.Enums;
+using snake_v1.Infrastructure;
+using snake_v1.Models.BaseItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace snake_v1.Infrastructure
+namespace snake_v1.Models.GeometricFigurs
 {
     public abstract class GeometricFigure : IPoint
     {
-        public List<IPoint> Points { get; set; }
+        public List<Point> Points { get; set; }
 
         public int X { get; set; }
         public int Y { get; set; }
-        public char Symbol { get ; set ; }
+        public char Symbol { get; set; }
         public ConsoleColor Color { get; set; } = ConsoleColor.White;
         public GeometricFigure(int x, int y)
         {
@@ -29,6 +31,15 @@ namespace snake_v1.Infrastructure
                            : this(x, y, symbol)
         {
             Color = color;
+        }
+
+        public GeometricFigure(int x ,int y ,List<GeometricFigure> geometricFigures)
+            :this (x,y)
+        {
+            foreach (var geometricFigure in geometricFigures)
+            {
+                Points.AddRange((IEnumerable<Point>)geometricFigure);
+            }
         }
         virtual public void Delete()
         {
@@ -49,11 +60,6 @@ namespace snake_v1.Infrastructure
             throw new NotImplementedException();
         }
         public object Clone()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsHit(IPoint point)
         {
             throw new NotImplementedException();
         }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace snake_v1.Models.GeometricFigurs
+namespace snake_v1.Models.BaseItems
 {
     public class Point : IPoint
     {
@@ -62,10 +62,6 @@ namespace snake_v1.Models.GeometricFigurs
             return new Point(X, Y, Symbol, Color);
         }
 
-        public bool IsHit(IPoint point)
-        {
-            return X == point.X && Y == point.Y;
-        }
 
         public void Draw()
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using snake_v1.Models.GeometricFigurs;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    interface IMap : IDrawble
+    interface IMap :  IRigidBody 
     {
         public int Height { get; }
 
@@ -15,11 +16,11 @@ namespace snake_v1.Infrastructure
 
         public string Name { get; }
 
-        public List<GameObject> Walls { get; }
+        public ConsoleColor ConsoleColor { get; }
+
         /// <summary>
         /// соприкосновение с картой 
         /// </summary>
-        public bool IsHit(IRigidBody gameObject);
 
     }
 }
