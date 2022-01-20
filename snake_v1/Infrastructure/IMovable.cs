@@ -1,4 +1,4 @@
-﻿using snake_v1.Models.BaseItems;
+﻿using snake_v1.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    interface IRigidPoint :IPoint
+    public interface IMovable
     {
-        bool isHit(RigidPoint rigidPoint);
+        void Move(MoveDirection direction, int count);
     }
 }
