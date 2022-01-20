@@ -11,14 +11,14 @@ namespace snake_v1.Infrastructure
     /// <summary>
     /// Умеет рисовать объект и удалять ,принимает цвет
     /// </summary>
-    public class GameObject
+    public abstract class GameObject<T> where T : IPoint, IRigidPoint
     {
-        protected List<IPoint> _points;
+        public List<T> Points;
         protected ConsoleColor _color;
 
         public GameObject(ConsoleColor color)
         {
-            _points = new List<IPoint>();
+            Points = new List<T>();
             _color = color;
         }
 
@@ -26,7 +26,7 @@ namespace snake_v1.Infrastructure
         {
             Console.ForegroundColor = _color;
 
-            foreach (var point in _points)
+            foreach (var point in Points)
             {
                 point.Draw();
             }
@@ -37,7 +37,7 @@ namespace snake_v1.Infrastructure
 
         public void Delete()
         {
-            foreach (var point in _points)
+            foreach (var point in Points)
             {
                 point.Delete();
             }

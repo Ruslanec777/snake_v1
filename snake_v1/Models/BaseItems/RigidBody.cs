@@ -37,7 +37,7 @@ namespace snake_v1.Models.BaseItems
 
         public bool IsHit(RigidPoint point)
         {
-            return _rigidPoints.Any(pnt => point.isHit(pnt));
+            return _rigidPoints.Any(pnt => point.IsHit(pnt));
         }
     }
 }

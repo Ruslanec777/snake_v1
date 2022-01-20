@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Models.BaseItems
 {
-    class RigidPoint : Point, IRigidPoint
+    public class RigidPoint : Point, IRigidPoint
     {
+
         private RigidPoint(int x, int y)
                     : base(x, y)
         {
@@ -26,9 +27,19 @@ namespace snake_v1.Models.BaseItems
 
         }
 
-        public bool isHit(RigidPoint rigidPoint)
+        public bool IsHit(IRigidPoint rigidPoint)
         {
-            return X == rigidPoint.X && Y == rigidPoint.Y;
+            return X==rigidPoint.X && Y==rigidPoint.Y;
         }
+
+        public bool IsHit(GameObject<IRigidPoint> rigidBody)
+        {
+            return 
+        }
+
+        //public bool IsHit(RigidPoint rigidPoint)
+        //{
+        //    return X == rigidPoint.X && Y == rigidPoint.Y;
+        //}
     }
 }
