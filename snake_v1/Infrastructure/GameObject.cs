@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-
     /// <summary>
     /// Умеет рисовать объект и удалять ,принимает цвет
     /// </summary>
@@ -27,25 +26,20 @@ namespace snake_v1.Infrastructure
                    : this(x, y)
         {
             Figur = (GeometricPrimitiv)figur;
-            Figur.Points.Add(new Point());
 
-            //List<T> ts = new List<IPoint>();
-            List<T> ts = new();
-            ts.AddRange(Points);
+            //Figur.Points.Add(new Point());
 
-            Figur.Points.Add(new Point());
-            Figur.Points
-            //List<T> ts = Figur.Points;
-            InicialPoints( Figur.Points); //TODO Разобрать почему не получается
+            InicialPoints(Figur.Points); //TODO Разобрать почему не получается
         }
-
-        private void InicialPoints(List<T> points)
+        //TODO разобрать почему не проходит
+        //private void InicialPoints(List<T> points)
+        private void InicialPoints(List<IPoint> points)
         {
             foreach (var point in points)
             {
                 point.X += X;
                 point.Y += Y;
-                Points.Add(point);
+                Points.Add((T)point);
             }
         }
 
@@ -55,8 +49,8 @@ namespace snake_v1.Infrastructure
             Symbol = symbol;
         }
 
-        public GameObject(int x, int y, List<T> points, char symbol, ConsoleColor color)
-                   : this(x, y, points, symbol)
+        public GameObject(int x, int y, IGeometricPrimitive figur, char symbol, ConsoleColor color)
+                   : this(x, y, figur, symbol)
         {
             Color = color;
         }
@@ -66,31 +60,32 @@ namespace snake_v1.Infrastructure
 
         public int Y { get; set; }
 
-        public List<T> Points { get; } = new();
+        public List<T> Points { get; set; } = new();
         public char Symbol { get; }
         public ConsoleColor Color { get; set; }
-        int IPoint.X { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        int IPoint.Y { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        //public GameObject(ConsoleColor color)
-        //{
-        //    _color = color;
-        //}
-
+        //TODO как написать автосвойство автоматически , из интерфейса , без throw?
+        //int IPoint.Y { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        int IPoint.X { get; set ; }
+        int IPoint.Y { get ; set; }
 
         public void Draw()
         {
+            if (Figur.Points.Count==0)
+            {
+                return;
+            }
             ConsoleColor tempConsoleColor = Console.ForegroundColor;
 
             Console.ForegroundColor = Color;
-
-            foreach (var point in Points)
+            // TODO меняется ли сам Figur?
+            foreach (var point in Figur.Points)
             {
+                point.X += X;
+                point.Y += Y;
                 point.Draw();
             }
 
             Console.ResetColor();
-
             Console.ForegroundColor = tempConsoleColor;
         }
 

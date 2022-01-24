@@ -1,5 +1,6 @@
 ﻿using snake_v1.Enums;
 using snake_v1.Infrastructure;
+using snake_v1.Models.BaseItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,28 +10,40 @@ using static snake_v1.Models.Direction;
 
 namespace snake_v1.Models
 {
-    class Snake : GameObject
+    class Snake : IRigidBody ,IDrawble ,IDeleteble ,IMovable 
     {
-        private IPoint _head;
-        private IPoint _tail;
-
-        public static char snakeHead = '0';
+        private char _headSymol = '0';
+        private char _tailSymbol = '*';
 
         private MoveDirection _direction;
 
-        public Snake(IPoint tail, int length, MoveDirection direction) : base(ConsoleColor.Green)
+        public List<IRigidPoint> Points => new();
+
+        public int X { get; set ; }
+        public int Y { get ; set ; }
+
+        // TODO как уйти от необходимости указывать IPoint.Color ?
+        ConsoleColor Color { get; }
+        char Symbol { get; }
+
+        ConsoleColor IPoint.Color => throw new NotImplementedException();
+
+        char IPoint.Symbol => throw new NotImplementedException();
+
+        public Snake(int x ,int y, int length, MoveDirection direction ,ConsoleColor color ) 
         {
-            _tail = tail;
             _direction = direction;
 
-
+            //TODO не могу обратиться к Color
+            Color = color;
+            
             Init(length);
         }
 
 
         public void Init(int length)
         {
-            _points.Add(_tail);
+            Points.Add(new RigidPoint(0,0,_headSymol,Color));
 
             for (int i = 0; i < length; i++)
             {
@@ -256,6 +269,31 @@ namespace snake_v1.Models
                     break;
             }
 
+        }
+
+        public bool IsHit(IRigidBody rigidBody)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsHit(IRigidPoint rigidPoint)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Draw()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Move(MoveDirection direction, int count)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -6,18 +6,21 @@ using static snake_v1.Models.GameSpeedController;
 using System.Collections.Generic;
 using snake_v1.Infrastructure;
 using System.Drawing;
+using snake_v1.Models.Map;
+using snake_v1.Models.BaseItems;
 
 namespace snake_v1.Models
 {
     static class Game
     {
-        private static Snake _snake;
-        private static List<GameObject> _map;
+        private static Snake snake;
 
-        private  const byte _windowHeight= 100;
-        private const byte _windowWidth= 100;
+        public static IMap map;
 
-        
+        private const byte _windowHeight = 100;
+        private const byte _windowWidth = 100;
+
+
 
 
         public static void Stert()
@@ -28,12 +31,12 @@ namespace snake_v1.Models
             while (true)
             {
                 Console.CursorVisible = false;
-                _snake.Move();
+                snake.Move();
 
                 //Console.Clear();
                 if (Console.KeyAvailable)
                 {
-                    _snake.ChangeDirection(Console.ReadKey(true).Key);
+                    snake.ChangeDirection(Console.ReadKey(true).Key);
                 }
                 ControlledPause();
 
@@ -47,17 +50,17 @@ namespace snake_v1.Models
             currentDirection = Enums.MoveDirection.Right;
             Console.SetWindowSize(_windowWidth, _windowHeight);
             initSnake();
-            _map = new List<GameObject>();
+            map = MapGenerator.Generate(Enums.MapType.Box, 1, 10, _windowHeight, _windowWidth, ConsoleColor.Yellow);
             //_map.Add(_snake);
-            Level1.initLevel(_map);
+            // Level1.initLevel(_map);
 
         }
 
         private static void initSnake()
         {
-            var teil = new Point(20, 20, '*', ConsoleColor.Green);
-            _snake = new Snake(teil, 5, Enums.MoveDirection.Right);
-            _snake.Draw();
+            var teil = new RigidPoint(20, 20, '*', ConsoleColor.Green);
+            snake = new Snake(teil, 5, Enums.MoveDirection.Right);
+            snake.Draw();
         }
     }
 }

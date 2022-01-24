@@ -7,15 +7,11 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public interface IGeometricPrimitive
+    public interface IGeometricPrimitive:IDisplaceable
     {
         public List<IPoint> Points { get; }
 
-        public Vector2D OffSet { get; set; }
 
-
-        //TODO добавил реализацию в интерфейс
-        public void AddOfset(int x, int y);
 
     }
 }

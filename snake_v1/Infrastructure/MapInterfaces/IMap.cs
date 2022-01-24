@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    interface IMap :  IRigidBody ,IRectangle ,IPoint
+    public interface IMap : IRigidBody, IRectangle, IPoint
     {
         public string Name { get; }
 

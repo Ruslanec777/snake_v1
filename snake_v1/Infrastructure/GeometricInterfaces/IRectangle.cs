@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    interface IMenuItem : IDrawble, IDeleteble, IStartCoordinates 
+    public interface IRectangle
     {
-        public string Text { get; set; }
+        public int Width { get; set; }
 
+        public int Height { get; set; }
     }
 }

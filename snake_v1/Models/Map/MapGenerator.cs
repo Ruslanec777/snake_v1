@@ -1,7 +1,7 @@
 ﻿using snake_v1.Enums;
 using snake_v1.Infrastructure;
 using snake_v1.Models.BaseItems;
-using snake_v1.Models.GeometricFigurs;
+using snake_v1.Models.GeometricPrimitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +10,15 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Models.Map
 {
-    class MapGenerator : IMapGenerator
+    public static class  MapGenerator 
     {
-        private readonly char _verticalChar = (char)9553;
-        private readonly char _horizontalChar = (char)9552;
+        //TODO почему невозможна реализация игтерфейса статическими методами?
+        private static readonly char _verticalChar = (char)9553;
+        private static readonly char _horizontalChar = (char)9552;
 
-        public IMap Generate(MapType type, int x, int y, int height, int width, ConsoleColor color)
+        public static Map Generate(MapType type, int x, int y, int height, int width, ConsoleColor color)
         {
-            IMap map = null;
+            Map map = null;
 
             switch (type)
             {
@@ -28,7 +29,7 @@ namespace snake_v1.Models.Map
             return map;
         }
 
-        private IMap GenerateBox(int x, int y, int height, int width, ConsoleColor color)
+        private static Map GenerateBox(int x, int y, int height, int width, ConsoleColor color)
         {
             //var upWall = new Line(_x + 1, _y, width, LineType.Horizontal, ConsoleColor.Red);
             //var rightWall = new Line(_x + width, _y + 1, height, LineType.Vertical, ConsoleColor.Red);
@@ -46,8 +47,9 @@ namespace snake_v1.Models.Map
             //var borders = new List<GeometricFigure>() { upWall, downWall, leftWall, rightWall, anglRightDown, anglLeftDown, anglLeftUp, anglRightUp };
             ////List<GeometricFigure> borders = new GameObject(new Rectangle(_x, _y, height, width, ConsoleColor.Red));
 
-            Picture borders = new Rectangle(x, y, height, width, color);
-            return new Map(x, y, "Box", borders);
+            GeometricPrimitiv borders = new Rectangle( height, width, color);
+
+            return new Map(x,y,"Box",borders);
         }
     }
 }

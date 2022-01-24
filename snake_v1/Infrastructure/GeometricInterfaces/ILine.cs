@@ -11,7 +11,6 @@ namespace snake_v1.Infrastructure
     {
         public int Length { get; set; }
         public LineType TypeLine { get; set; }
-
         public ConsoleColor Color { get; set; }
     }
 }

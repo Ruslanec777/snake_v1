@@ -10,16 +10,16 @@ namespace snake_v1.Models.Map
 {
     public class Map : RigidBody, IMap
     {
-        public int Height { get; private set; }
+        public int Height { get; set; }
 
-        public int Width { get; private set; }
+        public int Width { get; set; }
 
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         public ConsoleColor Color { get; }
 
-        public Map(int x, int y, string name, List<IPoint> geometricFigure)
-            : base(x, y, geometricFigure)
+        public Map(int x, int y, string name, IGeometricPrimitive figur)
+            : base(x, y, figur)
         {
             Name = name;
         }
