@@ -6,13 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Infrastructure\IPicture.cs" />
     <Compile Remove="Infrastructure\RigidObject.cs" />
-    <Compile Remove="Models\GameItems\Angl.cs" />
-    <Compile Remove="Models\GameItems\Line.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\GameItems\" />
+    <Compile Remove="Models\BaseItems\Picture.cs" />
   </ItemGroup>
 
 </Project>

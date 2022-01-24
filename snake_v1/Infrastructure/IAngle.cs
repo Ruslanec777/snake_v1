@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public interface IMovable
+    internal interface IAngle
     {
-        public void Move(MoveDirection direction, int count);
+        public AngleType TypeOfAngle { get; set; }
     }
 }

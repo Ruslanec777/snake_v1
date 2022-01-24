@@ -1,5 +1,4 @@
-﻿using snake_v1.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public interface IMovable
+    internal interface IPicture
     {
-        public void Move(MoveDirection direction, int count);
+        public ConsoleColor Color { get; set; }
+
+        public char CharOfPicture { get; set; }
+
     }
 }

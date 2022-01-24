@@ -1,4 +1,5 @@
 ﻿using snake_v1.Enums;
+using snake_v1.Infrastructure;
 using snake_v1.Models.BaseItems;
 using System;
 using System.Collections.Generic;
@@ -6,31 +7,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace snake_v1.Models.GeometricFigurs
+namespace snake_v1.Models.GeometricPrimitives
 {
-    public class Line : GeometricFigure
+    //TODO решить как передавать примитив или преобразовать примитив в картинку
+    public class Line : GeometricPrimitiv ,ILine
     {
         private readonly char _verticalChar = (char)9553;
         private readonly char _horizontalChar = (char)9552;
 
         public int Length { get; set; }
-        public LineType lineType { get; set; }
+        public LineType TypeLine { get; set; }
 
-        public Line(int x, int y, int length, LineType lineType)
-             : base(x, y)
+        public List<IPoint> Points { get; }
+        public ConsoleColor Color { get ; set ; }
+
+        public Line( int length, LineType lineType)
+            
         {
-            InitPoints(x, y, length, lineType);
+            Length = length;
+            TypeLine = lineType;
+
+            InitPoints(length, lineType);
         }
 
-        public Line(int x, int y, int length, LineType lineType, ConsoleColor color)
-             : base(x, y)
+        public Line(int length, LineType lineType, ConsoleColor color)            
         {
             Color = color;
-            InitPoints(x, y, length, lineType);
+            InitPoints( length, lineType);
         }
 
-        private void InitPoints(int x, int y, int length, LineType lineType)
+        private void InitPoints(int length, LineType lineType)
         {
+            int x=0;
+            int y=0;
+
             switch (lineType)
             {
                 case LineType.Vertical:

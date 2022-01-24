@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public interface IStartCoordinates
+    internal interface IRectangle
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public int Width { get; set; }
+
+        public int Height { get; set; }
     }
 }

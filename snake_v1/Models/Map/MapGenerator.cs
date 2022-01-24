@@ -1,5 +1,6 @@
 ﻿using snake_v1.Enums;
 using snake_v1.Infrastructure;
+using snake_v1.Models.BaseItems;
 using snake_v1.Models.GeometricFigurs;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,7 @@ namespace snake_v1.Models.Map
             //var borders = new List<GeometricFigure>() { upWall, downWall, leftWall, rightWall, anglRightDown, anglLeftDown, anglLeftUp, anglRightUp };
             ////List<GeometricFigure> borders = new GameObject(new Rectangle(_x, _y, height, width, ConsoleColor.Red));
 
-            GeometricFigure borders = new Rectangle(x, y, height, width, color);
+            Picture borders = new Rectangle(x, y, height, width, color);
             return new Map(x, y, "Box", borders);
         }
     }

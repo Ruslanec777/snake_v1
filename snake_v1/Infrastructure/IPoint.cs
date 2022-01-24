@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public interface IPoint : ICloneable, IDrawble, IDeleteble , IMovable
+    public interface IPoint : IDrawble, IDeleteble, IMovable
     {
-        public int X { get; }
-        public int Y { get; }
-        ConsoleColor Color { get; set; }
-        char Symbol { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public ConsoleColor Color { get; }
+        public char Symbol { get; }
 
     }
 }

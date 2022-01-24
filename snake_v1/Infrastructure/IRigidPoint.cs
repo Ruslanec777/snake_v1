@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public interface IRigidPoint :IPoint
+    public interface IRigidPoint : IPoint
     {
-       public bool IsHit(IRigidPoint rigidPoint);
+        public bool IsHit(IRigidPoint rigidPoint);
 
-        public bool IsHit(GameObject<IRigidPoint> rigidBody);
+        //public bool IsHit(GameObject<IRigidPoint> rigidBody);
     }
 }

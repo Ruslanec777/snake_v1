@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public interface IMovable
+    internal interface ILine
     {
-        public void Move(MoveDirection direction, int count);
+        public int Length { get; set; }
+        public LineType TypeLine { get; set; }
+
+        public ConsoleColor Color { get; set; }
     }
 }
