@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Models.BaseItems
 {
-    public class Point : IPoint, ICloneable
+    public class Point : IPoint
     {
         public int X { get; set; } = 0;
         public int Y { get; set; } = 0;

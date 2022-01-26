@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public interface IPoint : IDrawble, IDeleteble, IMovable
+    public interface IPoint : IDrawble, IDeleteble, IMovable,ICloneable
     {
         public int X { get; set; }
         public int Y { get; set; }

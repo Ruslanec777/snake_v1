@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public interface IRigidBody : IRigidPoint
+    //не наследовать 
+    public interface IRigidBody 
     {
+        public int X { get; set; }
+        public int Y { get; set; }
         public List<IRigidPoint> Points { get; }
 
         public bool IsHit(IRigidBody rigidBody);
