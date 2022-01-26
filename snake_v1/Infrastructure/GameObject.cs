@@ -39,7 +39,10 @@ namespace snake_v1.Infrastructure
             {
                 point.X += X;
                 point.Y += Y;
-                Points.Add((T)point);
+                // так работает :
+                //Points.Add((T)point);
+                //так не работает:
+                Points.Add(point);
             }
         }
 
