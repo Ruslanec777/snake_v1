@@ -18,7 +18,6 @@ namespace snake_v1.Models.GeometricPrimitives
 
         public AngleType TypeOfAngle { get; set; }
 
-        public List<IPoint> Points { get; } = new();
         //public ConsoleColor Color { get ; set; }
         //public char CharOfPicture { get; set; }
 

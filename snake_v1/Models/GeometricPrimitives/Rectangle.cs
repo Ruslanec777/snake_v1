@@ -11,7 +11,7 @@ namespace snake_v1.Models.GeometricPrimitives
     {
         public int Width { get; set; }
         public int Height { get; set; }
-        public List<IPoint> Points { get; }
+        //public List<IPoint> Points { get; set; } = new List<IPoint>();
 
         public ConsoleColor Color { get; set; } = ConsoleColor.Red;
 

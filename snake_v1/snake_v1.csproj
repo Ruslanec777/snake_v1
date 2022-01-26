@@ -6,9 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Infrastructure\IClonable.cs" />
     <Compile Remove="Infrastructure\IPicture.cs" />
     <Compile Remove="Infrastructure\RigidObject.cs" />
     <Compile Remove="Models\BaseItems\Picture.cs" />
+    <Compile Remove="Models\Level1.cs" />
+    <Compile Remove="Models\Snake.cs" />
   </ItemGroup>
 
 </Project>

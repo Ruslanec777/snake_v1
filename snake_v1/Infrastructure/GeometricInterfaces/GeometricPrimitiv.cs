@@ -9,7 +9,7 @@ namespace snake_v1.Infrastructure
 {
     public abstract class GeometricPrimitiv : IGeometricPrimitive
     {
-        public List<IPoint> Points { get; set; } // TODO вернуть  = new();
+        public List<IPoint> Points { get; set; } = new();
 
         public Vector2D OffSet { get; set; } = new(0, 0);
 

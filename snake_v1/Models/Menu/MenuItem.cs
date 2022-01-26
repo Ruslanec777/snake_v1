@@ -1,4 +1,5 @@
-﻿using snake_v1.Infrastructure;
+﻿using snake_v1.Enums;
+using snake_v1.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,10 @@ namespace snake_v1.Models.Menu
         public string Text { get ; set; }
         public int X { get; set ; }
         public int Y { get; set; }
+
+        public ConsoleColor Color => throw new NotImplementedException();
+
+        public char Symbol => throw new NotImplementedException();
 
         public void Delete()
         {
@@ -29,6 +34,11 @@ namespace snake_v1.Models.Menu
         {
             Console.SetCursorPosition(X, Y);
             Console.WriteLine($"{Text}");
+        }
+
+        public void Move(MoveDirection direction, int count)
+        {
+            throw new NotImplementedException();
         }
     }
 }

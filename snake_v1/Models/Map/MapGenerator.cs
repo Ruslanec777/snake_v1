@@ -13,8 +13,8 @@ namespace snake_v1.Models.Map
     public static class  MapGenerator 
     {
         //TODO почему невозможна реализация игтерфейса статическими методами?
-        private static readonly char _verticalChar = (char)9553;
-        private static readonly char _horizontalChar = (char)9552;
+        //private static readonly char _verticalChar = (char)9553;
+        //private static readonly char _horizontalChar = (char)9552;
 
         public static Map Generate(MapType type, int x, int y, int height, int width, ConsoleColor color)
         {

@@ -16,10 +16,8 @@ namespace snake_v1.Models.Map
 
         public string Name { get; set; }
 
-        public ConsoleColor Color { get; }
-
         public Map(int x, int y, string name, IGeometricPrimitive figur)
-            : base(x, y, figur)
+             : base(x, y, figur)
         {
             Name = name;
         }

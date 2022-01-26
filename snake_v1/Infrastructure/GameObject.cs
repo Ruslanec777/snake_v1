@@ -15,6 +15,17 @@ namespace snake_v1.Infrastructure
     /// </summary>
     public class GameObject<T> : IPoint where T : IPoint
     {
+        public int X { get; set; }
+
+        public int Y { get; set; }
+
+        public List<T> Points { get; set; } = new();
+        public char Symbol { get; }
+        public ConsoleColor Color { get; set; }
+        //TODO как написать автосвойство автоматически , из интерфейса , без throw?
+        //int IPoint.Y { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        int IPoint.X { get; set; }
+        int IPoint.Y { get; set; }
         public GeometricPrimitiv Figur { get; set; } //= new Line(23, LineType.Horizontal);
         public GameObject(int x, int y)
         {
@@ -40,9 +51,9 @@ namespace snake_v1.Infrastructure
                 point.X += X;
                 point.Y += Y;
                 // так работает :
-                //Points.Add((T)point);
+                Points.Add((T)point);
                 //так не работает:
-                Points.Add(point);
+                //Points.Add(point);
             }
         }
 
@@ -59,17 +70,7 @@ namespace snake_v1.Infrastructure
         }
 
         //protected ConsoleColor _color;
-        public int X { get; set; }
 
-        public int Y { get; set; }
-
-        public List<T> Points { get; set; } = new();
-        public char Symbol { get; }
-        public ConsoleColor Color { get; set; }
-        //TODO как написать автосвойство автоматически , из интерфейса , без throw?
-        //int IPoint.Y { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        int IPoint.X { get; set ; }
-        int IPoint.Y { get ; set; }
 
         public void Draw()
         {

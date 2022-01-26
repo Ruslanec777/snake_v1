@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading;
 using static snake_v1.Models.Direction;
-using static snake_v1.Models.Snake;
+//TODO вернуть 
+//using static snake_v1.Models.Snake;
 using static snake_v1.Models.GameSpeedController;
 using System.Collections.Generic;
 using snake_v1.Infrastructure;
@@ -13,12 +14,13 @@ namespace snake_v1.Models
 {
     static class Game
     {
-        private static Snake snake;
+        //TODO вернуть 
+       // private static Snake snake;
 
         public static IMap map;
 
-        private const byte _windowHeight = 100;
-        private const byte _windowWidth = 100;
+        private const byte WINDOWHIGHT = 30;
+        private const byte WINDOWWIDTH = 100;
 
 
 
@@ -31,12 +33,14 @@ namespace snake_v1.Models
             while (true)
             {
                 Console.CursorVisible = false;
-                snake.Move();
+                //TODO вернуть 
+                //snake.Move();
 
                 //Console.Clear();
                 if (Console.KeyAvailable)
                 {
-                    snake.ChangeDirection(Console.ReadKey(true).Key);
+                    //TODO вернуть 
+                    //snake.ChangeDirection(Console.ReadKey(true).Key);
                 }
                 ControlledPause();
 
@@ -48,9 +52,9 @@ namespace snake_v1.Models
             Console.Clear();
             Console.CursorVisible = false;
             currentDirection = Enums.MoveDirection.Right;
-            Console.SetWindowSize(_windowWidth, _windowHeight);
+            Console.SetWindowSize(WINDOWWIDTH, WINDOWHIGHT);
             initSnake();
-            map = MapGenerator.Generate(Enums.MapType.Box, 1, 10, _windowHeight, _windowWidth, ConsoleColor.Yellow);
+            map = MapGenerator.Generate(Enums.MapType.Box, 1, 10, WINDOWHIGHT, WINDOWWIDTH, ConsoleColor.Yellow);
             //_map.Add(_snake);
             // Level1.initLevel(_map);
 
@@ -59,8 +63,9 @@ namespace snake_v1.Models
         private static void initSnake()
         {
             var teil = new RigidPoint(20, 20, '*', ConsoleColor.Green);
-            snake = new Snake(teil, 5, Enums.MoveDirection.Right);
-            snake.Draw();
+            //TODO вернуть 
+            //snake = new Snake(teil, 5, Enums.MoveDirection.Right);
+            //snake.Draw();
         }
     }
 }

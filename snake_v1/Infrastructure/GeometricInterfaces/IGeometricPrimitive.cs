@@ -9,9 +9,7 @@ namespace snake_v1.Infrastructure
 {
     public interface IGeometricPrimitive:IDisplaceable
     {
-        public List<IPoint> Points { get; }
-
-
+        public List<IPoint> Points { get; set;  }
 
     }
 }

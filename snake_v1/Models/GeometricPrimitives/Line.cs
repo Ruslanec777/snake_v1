@@ -17,8 +17,7 @@ namespace snake_v1.Models.GeometricPrimitives
 
         public int Length { get; set; }
         public LineType TypeLine { get; set; }
-
-        public List<IPoint> Points { get; }
+        //TODO как унаследовать присвоение new() ?
         public ConsoleColor Color { get ; set ; }
 
         public Line( int length, LineType lineType)

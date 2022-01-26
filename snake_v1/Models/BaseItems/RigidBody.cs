@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace snake_v1.Models.BaseItems
 {
     //TODO уточнить правильность заполнения IClonable<RigidBody>
-    public class RigidBody : GameObject<IRigidPoint>, IClonable<RigidBody>, IRigidBody
+    public class RigidBody : GameObject<IRigidPoint>, ICloneable, IRigidBody
     {
         public RigidBody(int x, int y) : base(x, y)
         {
@@ -27,12 +27,10 @@ namespace snake_v1.Models.BaseItems
         {
         }
 
-        // TODO проверить
-        public RigidBody Clon()
+        public object Clone()
         {
             return new RigidBody(X, Y, Figur, Symbol, Color);
         }
-
 
         public bool IsHit(IRigidPoint rigidPoint)
         {
