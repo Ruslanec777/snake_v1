@@ -11,8 +11,8 @@ namespace snake_v1.Infrastructure
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public ConsoleColor Color { get; }
-        public char Symbol { get; }
+        public ConsoleColor Color { get; set; }
+        public char Symbol { get; set; }
 
     }
 }

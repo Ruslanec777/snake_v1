@@ -15,21 +15,21 @@ namespace snake_v1.Models.BaseItems
         {
         }
 
-        public RigidBody(int x, int y, IGeometricPrimitive figur) : base(x, y, figur)
+        public RigidBody(int x, int y, IGeometricPrimitive<IRigidPoint> figur) : base(x, y, figur)
         {
         }
 
-        public RigidBody(int x, int y, IGeometricPrimitive figur, char symbol) : base(x, y, figur, symbol)
+        public RigidBody(int x, int y, IGeometricPrimitive<IRigidPoint> figur, char symbol) : base(x, y, figur, symbol)
         {
         }
 
-        public RigidBody(int x, int y, IGeometricPrimitive figur, char symbol, ConsoleColor color) : base(x, y, figur, symbol, color)
+        public RigidBody(int x, int y, IGeometricPrimitive<IRigidPoint> figur, char symbol, ConsoleColor color) : base(x, y, figur, symbol, color)
         {
         }
 
         public object Clone()
         {
-            return new RigidBody(X, Y, Figur, Symbol, Color);
+            return new RigidBody(StartPoint.X, StartPoint.Y, Figur, StartPoint.Symbol, StartPoint.Color);
         }
 
         public bool IsHit(IRigidPoint rigidPoint)

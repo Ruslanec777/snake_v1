@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public interface IGeometricPrimitive:IDisplaceable
+    public interface IGeometricPrimitive<T> :IDisplaceable
     {
-        public List<IPoint> Points { get; set;  }
+        public List<T> Points { get; set;  }
 
     }
 }

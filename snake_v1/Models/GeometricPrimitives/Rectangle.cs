@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace snake_v1.Models.GeometricPrimitives
 {
-    class Rectangle : GeometricPrimitiv ,IRectangle
+    class Rectangle<T> : GeometricPrimitiv<T> ,IRectangle
     {
         public int Width { get; set; }
         public int Height { get; set; }

@@ -10,19 +10,51 @@ namespace snake_v1.Models.BaseItems
 {
     public class RigidPoint : Point, IRigidPoint
     {
-        public RigidPoint(int x, int y) 
+        /*
+         
+         namespace generic_class_interface.mods
+{
+    internal class Counter
+    {
+
+        public int Seconds { get; set; }
+
+        public Counter(int x)
+        {
+            Seconds = x;
+        }
+
+        public static explicit operator Counter(int x)
+        {
+            return new Counter(x) ;
+        }
+        public static explicit operator int(Counter counter)
+        {
+            return counter.Seconds;
+        }
+    }
+}
+         */
+        //public static explicit operator RigidPoint(Point point) => new RigidPoint(point);
+
+        public RigidPoint(int x, int y)
                    : base(x, y)
         {
         }
 
-        public RigidPoint(int x, int y, char symbol) 
+        public RigidPoint(int x, int y, char symbol)
                    : base(x, y, symbol)
         {
         }
 
-        public RigidPoint(int x, int y, char symbol, ConsoleColor color) 
+        public RigidPoint(int x, int y, char symbol, ConsoleColor color)
                    : base(x, y, symbol, color)
         {
+        }
+
+        public RigidPoint(Point point) : this(point.X, point.Y, point.Symbol, point.Color)
+        {
+            //TODO можно ли из тела конструктора вызвать this или base ? 
         }
 
         public bool IsHit(IRigidPoint rigidPoint)

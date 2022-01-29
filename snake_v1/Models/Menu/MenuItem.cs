@@ -18,6 +18,8 @@ namespace snake_v1.Models.Menu
 
         public char Symbol => throw new NotImplementedException();
 
+        public IPoint StartPoint { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public void Delete()
         {
             Console.SetCursorPosition(X, Y);

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public interface IMenuItem : IDrawble, IDeleteble, IStartPoint
-    { 
-        public string Text { get; set; }
+    public interface IStartPoint
+    {
+        IPoint StartPoint { get; set; }
     }
 }

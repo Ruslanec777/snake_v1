@@ -47,7 +47,7 @@ namespace snake_v1.Models.Map
             //var borders = new List<GeometricFigure>() { upWall, downWall, leftWall, rightWall, anglRightDown, anglLeftDown, anglLeftUp, anglRightUp };
             ////List<GeometricFigure> borders = new GameObject(new Rectangle(_x, _y, height, width, ConsoleColor.Red));
 
-            GeometricPrimitiv borders = new Rectangle( height, width, color);
+            GeometricPrimitiv<IRigidPoint> borders = new Rectangle( height, width, color);
 
             return new Map(x,y,"Box",borders);
         }

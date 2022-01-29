@@ -22,9 +22,6 @@ namespace snake_v1.Models
         private const byte WINDOWHIGHT = 30;
         private const byte WINDOWWIDTH = 100;
 
-
-
-
         public static void Stert()
         {
 
@@ -43,7 +40,6 @@ namespace snake_v1.Models
                     //snake.ChangeDirection(Console.ReadKey(true).Key);
                 }
                 ControlledPause();
-
             }
         }
 
@@ -53,7 +49,8 @@ namespace snake_v1.Models
             Console.CursorVisible = false;
             currentDirection = Enums.MoveDirection.Right;
             Console.SetWindowSize(WINDOWWIDTH, WINDOWHIGHT);
-            initSnake();
+            //TODO вернуть 
+            //initSnake();
             map = MapGenerator.Generate(Enums.MapType.Box, 1, 10, WINDOWHIGHT, WINDOWWIDTH, ConsoleColor.Yellow);
             //_map.Add(_snake);
             // Level1.initLevel(_map);
