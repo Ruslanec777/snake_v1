@@ -8,38 +8,46 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Models.BaseItems
 {
-    //TODO уточнить правильность заполнения IClonable<RigidBody>
-    public class RigidBody : GameObject<IRigidPoint>, ICloneable, IRigidBody
+    public class RigidBody : GameObject, IRigidBody, ICloneable
     {
+        //TODO разобрать , нужно ли переписывать конструкторы 
         public RigidBody(int x, int y) : base(x, y)
         {
         }
 
-        public RigidBody(int x, int y, IGeometricPrimitive<IRigidPoint> figur) : base(x, y, figur)
+        public RigidBody(int x, int y, IGeometricPrimitive figur) : base(x, y, figur)
+        {
+            
+        }
+
+        public RigidBody(int x, int y, IGeometricPrimitive figur, char symbol) : base(x, y, figur, symbol)
         {
         }
 
-        public RigidBody(int x, int y, IGeometricPrimitive<IRigidPoint> figur, char symbol) : base(x, y, figur, symbol)
+        public RigidBody(int x, int y, IGeometricPrimitive figur, char symbol, ConsoleColor color) : base(x, y, figur, symbol, color)
         {
         }
 
-        public RigidBody(int x, int y, IGeometricPrimitive<IRigidPoint> figur, char symbol, ConsoleColor color) : base(x, y, figur, symbol, color)
+        private RigidBody(int x, int y, IGeometricPrimitive figur, List<IPoint> points, char symbol, ConsoleColor color) : base(x, y, figur, symbol, color)
         {
+            Points = points;
         }
 
         public object Clone()
         {
-            return new RigidBody(StartPoint.X, StartPoint.Y, Figur, StartPoint.Symbol, StartPoint.Color);
-        }
-
-        public bool IsHit(IRigidPoint rigidPoint)
-        {
-            return Points.Any(rigPoint => rigPoint.IsHit(rigidPoint));
+            return new RigidBody(StartPoint.X, StartPoint.Y, Figur, Points, StartPoint.Symbol, StartPoint.Color);
         }
 
         public bool IsHit(IRigidBody rigidBody)
         {
-            return Points.Any(rigPoint => rigidBody.IsHit(rigPoint));
+            return Points.Any(point => rigidBody.IsHit(point));
         }
+
+        public bool IsHit(IPoint point)
+        {
+            return Points.Any(point => this.IsHit(point));
+        }
+
+
     }
 }

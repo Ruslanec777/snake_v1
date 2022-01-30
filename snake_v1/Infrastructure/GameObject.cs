@@ -1,4 +1,5 @@
 ﻿using snake_v1.Enums;
+using snake_v1.Infrastructure.GeometricInterfaces;
 using snake_v1.Models.BaseItems;
 using System;
 using System.Collections.Generic;
@@ -8,62 +9,76 @@ namespace snake_v1.Infrastructure
     /// <summary>
     /// Умеет рисовать объект и удалять ,принимает цвет
     /// </summary>
-    public class GameObject<T> : IStartPoint where T : IPoint
+    public abstract class GameObject : IStartPoint, IGameObject
     {
-        public List<T> Points { get; set; } = new();
+        private List<IPoint> tempPoints;
+        public List<IPoint> Points
+        {
+            get
+            {
+                tempPoints = new List<IPoint>();
 
-        public IGeometricPrimitive<T> Figur { get; set; } //= new Line(23, LineType.Horizontal);
+                foreach (var point in Figur.Points)
+                {
+                    point.X += Figur.OffSet.X;
+                    point.Y += Figur.OffSet.Y;
+                    point.Color = Figur.Color;
+
+                    tempPoints.Add(point);
+                }
+                return tempPoints;
+            }
+            set { }
+        }
+
+        public IGeometricPrimitive Figur { get; set; } //= new Line(23, LineType.Horizontal);
+
         public IPoint StartPoint { get; set; }
+        public ConsoleColor Color { get; set; }
 
         public GameObject()
         {
+            Points = new();
         }
 
-        public GameObject(int x, int y)
+        public GameObject(int x, int y) : this()
         {
-            StartPoint = new Point ();
+            StartPoint = new Point();
             StartPoint.X = x;
             StartPoint.Y = y;
         }
 
-        public GameObject(int x, int y, IGeometricPrimitive<T> figur)
+        public GameObject(int x, int y, IGeometricPrimitive figur)
                    : this(x, y)
         {
             Figur = figur;
 
-            //Figur.Points.Add(new Point());
-
-            InicialPoints(Figur.Points ); //TODO Разобрать почему не получается
+            InicialPoints(Figur.Points);
         }
-        //TODO разобрать почему не проходит
-        //private void InicialPoints(List<T> points)
-        private void InicialPoints(List<T> points)
-        {
 
+
+        public GameObject(int x, int y, IGeometricPrimitive figur, char symbol)
+                   : this(x, y, figur)
+        {
+            StartPoint.Symbol = symbol;
+        }
+
+        public GameObject(int x, int y, IGeometricPrimitive figur, char symbol, ConsoleColor color)
+                   : this(x, y, figur, symbol)
+        {
+            StartPoint.Color = color;
+        }
+
+        protected void InicialPoints(List<IPoint> points)
+        {
             foreach (var point in points)
             {
                 point.X += StartPoint.X;
                 point.Y += StartPoint.Y;
 
                 Points.Add(point);
-
             }
         }
-
-        public GameObject(int x, int y, IGeometricPrimitive<T> figur, char symbol)
-                   : this(x, y, figur)
-        {
-            StartPoint.Symbol = symbol;
-        }
-
-        public GameObject(int x, int y, IGeometricPrimitive<T> figur, char symbol, ConsoleColor color)
-                   : this(x, y, figur, symbol)
-        {
-            StartPoint.Color = color;
-        }
-
-        //protected ConsoleColor _color;
-
 
         public void Draw()
         {
@@ -73,9 +88,9 @@ namespace snake_v1.Infrastructure
             }
             ConsoleColor tempConsoleColor = Console.ForegroundColor;
 
-            Console.ForegroundColor = StartPoint.Color;
+            Console.ForegroundColor = Figur.Color;
             // TODO меняется ли сам Figur?
-            foreach (var point in Figur.Points)
+            foreach (var point in Points)
             {
                 point.X += StartPoint.X;
                 point.Y += StartPoint.Y;

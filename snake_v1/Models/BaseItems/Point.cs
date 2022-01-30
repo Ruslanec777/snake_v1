@@ -10,10 +10,11 @@ namespace snake_v1.Models.BaseItems
 {
     public class Point : IPoint, ICloneable
     {
-        public int X { get; set; } = 0;
-        public int Y { get; set; } = 0;
-        public char Symbol { get; set; } = ' ';
-        public ConsoleColor Color { get; set; } = ConsoleColor.Black;
+        public int X { get; set; } 
+        public int Y { get; set; } 
+        public char Symbol { get; set; } 
+        public ConsoleColor Color { get; set; } 
+        public MoveDirection LastMove { get ; set ; }
 
         public Point()
         {
@@ -53,9 +54,15 @@ namespace snake_v1.Models.BaseItems
             Color = color;
         }
 
+        public Point(ConsoleColor color)
+        {
+            Color = color;
+        }
 
         public void Move(MoveDirection direction, int count)
         {
+            LastMove = direction;
+
             switch (direction)
             {
                 case MoveDirection.Up:

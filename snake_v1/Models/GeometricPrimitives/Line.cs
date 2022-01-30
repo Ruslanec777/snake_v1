@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace snake_v1.Models.GeometricPrimitives
 {
     //TODO решить как передавать примитив или преобразовать примитив в картинку
-    public class Line : GeometricPrimitiv<T> ,ILine
+    public class Line : GeometricPrimitiv ,ILine
     {
         private readonly char _verticalChar = (char)9553;
         private readonly char _horizontalChar = (char)9552;

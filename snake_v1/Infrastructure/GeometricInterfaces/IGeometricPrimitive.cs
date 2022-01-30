@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public interface IGeometricPrimitive<T> :IDisplaceable
+    public interface IGeometricPrimitive :IDisplaceable
     {
-        public List<T> Points { get; set;  }
+        public List<IPoint> Points { get; set;  }
+        ConsoleColor Color { get; set; }
 
+        void TakeOnFigure(GeometricPrimitiv geometricPrimitiv);
+        void TakeOnFigure(IPoint point);
     }
 }

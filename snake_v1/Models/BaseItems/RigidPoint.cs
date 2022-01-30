@@ -10,33 +10,6 @@ namespace snake_v1.Models.BaseItems
 {
     public class RigidPoint : Point, IRigidPoint
     {
-        /*
-         
-         namespace generic_class_interface.mods
-{
-    internal class Counter
-    {
-
-        public int Seconds { get; set; }
-
-        public Counter(int x)
-        {
-            Seconds = x;
-        }
-
-        public static explicit operator Counter(int x)
-        {
-            return new Counter(x) ;
-        }
-        public static explicit operator int(Counter counter)
-        {
-            return counter.Seconds;
-        }
-    }
-}
-         */
-        //public static explicit operator RigidPoint(Point point) => new RigidPoint(point);
-
         public RigidPoint(int x, int y)
                    : base(x, y)
         {

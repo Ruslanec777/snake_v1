@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Models.GeometricPrimitives
 {
-    class Angl : GeometricPrimitiv<T> ,IAngle 
+    class Angl : GeometricPrimitiv ,IAngle 
     {
         private readonly char _anglleftUp = (char)9565;
         private readonly char _anglLeftDown = (char)9559;
@@ -23,13 +23,14 @@ namespace snake_v1.Models.GeometricPrimitives
 
         public Angl(AngleType angleType, ConsoleColor color)
         {
+            Color = color;
             TypeOfAngle = angleType;
             InitPoints(angleType);
         }
 
         private void InitPoints(AngleType angleType)
         {
-            Point point = new();
+            Point point = new Point(Color);
             switch (angleType)
             {
                 case AngleType.LeftUp:

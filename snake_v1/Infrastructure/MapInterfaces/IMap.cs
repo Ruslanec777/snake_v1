@@ -9,7 +9,7 @@ namespace snake_v1.Infrastructure
 {
     public interface IMap : IRigidBody, IRectangle, IStartPoint
     {
-        public string Name { get; }
+        string Name { get; }
 
 
         /// <summary>

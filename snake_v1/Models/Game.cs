@@ -9,13 +9,16 @@ using snake_v1.Infrastructure;
 using System.Drawing;
 using snake_v1.Models.Map;
 using snake_v1.Models.BaseItems;
+using Point = snake_v1.Models.BaseItems.Point;
+using snake_v1.Infrastructure.GeometricInterfaces;
+using snake_v1.Models.GeometricPrimitives;
 
 namespace snake_v1.Models
 {
     static class Game
     {
         //TODO вернуть 
-       // private static Snake snake;
+        // private static Snake snake;
 
         public static IMap map;
 
@@ -26,6 +29,9 @@ namespace snake_v1.Models
         {
 
             initGame();
+
+            //TODO убрать 
+            return;
 
             while (true)
             {
@@ -51,15 +57,17 @@ namespace snake_v1.Models
             Console.SetWindowSize(WINDOWWIDTH, WINDOWHIGHT);
             //TODO вернуть 
             //initSnake();
-            map = MapGenerator.Generate(Enums.MapType.Box, 1, 10, WINDOWHIGHT, WINDOWWIDTH, ConsoleColor.Yellow);
+            map = MapGenerator.Generate(Enums.MapType.Box, 1, 4, WINDOWWIDTH, WINDOWHIGHT, ConsoleColor.Yellow);
+            map.Draw();
             //_map.Add(_snake);
-            // Level1.initLevel(_map);
 
+            // Level1.initLevel(_map);
+            Thread.Sleep(10000);
         }
 
         private static void initSnake()
         {
-            var teil = new RigidPoint(20, 20, '*', ConsoleColor.Green);
+            var teil = new Point(20, 20, '*', ConsoleColor.Green);
             //TODO вернуть 
             //snake = new Snake(teil, 5, Enums.MoveDirection.Right);
             //snake.Draw();

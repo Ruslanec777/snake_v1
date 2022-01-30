@@ -16,5 +16,10 @@ namespace snake_v1.Models.BaseItems
             X = x;
             Y = y;
         }
+
+        public static implicit operator Vector2D((int, int) v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
