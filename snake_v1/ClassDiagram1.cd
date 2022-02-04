@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="snake_v1.Infrastructure.GeometricPrimitiv" Collapsed="true">
-    <Position X="4.5" Y="10" Width="1.5" />
+    <Position X="3" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAgAAAACCAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Infrastructure\GeometricInterfaces\GeometricPrimitiv.cs</FileName>
@@ -9,7 +9,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="snake_v1.Infrastructure.GameObject" Collapsed="true">
-    <Position X="11.25" Y="10" Width="1.5" />
+    <Position X="9.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAIAAggAIAAAAAAAAAAEAEAAAAAAAgAAAAAg=</HashCode>
       <FileName>Infrastructure\GameObject.cs</FileName>
@@ -17,7 +17,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="snake_v1.Models.BaseItems.Picture" Collapsed="true">
-    <Position X="10" Y="11.25" Width="1.5" />
+    <Position X="8.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Models\BaseItems\Picture.cs</FileName>
@@ -25,15 +25,15 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="snake_v1.Models.BaseItems.Point" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="20.5" Y="5" Width="1.5" />
+    <Position X="19" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAAgAAAAAAAAAAAAMAAAAAAAAAgAAAaBA=</HashCode>
+      <HashCode>AAAAIAAAAIAAAgAAAAAAAAAAAAMAAAAAAAAAgAAAaBA=</HashCode>
       <FileName>Models\BaseItems\Point.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="snake_v1.Models.BaseItems.RigidBody">
-    <Position X="12.25" Y="11.25" Width="1.5" />
+  <Class Name="snake_v1.Models.BaseItems.RigidBody" Collapsed="true">
+    <Position X="10.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAABA=</HashCode>
       <FileName>Models\BaseItems\RigidBody.cs</FileName>
@@ -41,14 +41,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="snake_v1.Models.BaseItems.Vector2D" Collapsed="true">
-    <Position X="18.75" Y="6" Width="1.5" />
+    <Position X="17.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
       <FileName>Models\BaseItems\Vector2D.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="snake_v1.Models.GeometricPrimitives.Angl" Collapsed="true">
-    <Position X="2.25" Y="11.25" Width="1.5" />
+    <Position X="0.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAACCQAgAAAAAACAAAAABAAAAAAA=</HashCode>
       <FileName>Models\GeometricPrimitives\Angl.cs</FileName>
@@ -56,7 +56,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="snake_v1.Models.GeometricPrimitives.Line" Collapsed="true">
-    <Position X="4.5" Y="11.25" Width="1.5" />
+    <Position X="3" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAAAAAAAAAAAAABAAAAAACAACAAAgAAAAgA=</HashCode>
       <FileName>Models\GeometricPrimitives\Line.cs</FileName>
@@ -64,7 +64,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="snake_v1.Models.GeometricPrimitives.Rectangle" Collapsed="true">
-    <Position X="6.75" Y="11.25" Width="1.5" />
+    <Position X="5.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAABAAAAAAAAAAAAEAAAAAAACAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\GeometricPrimitives\Rectangle.cs</FileName>
@@ -72,7 +72,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="snake_v1.Models.Map.Map" Collapsed="true">
-    <Position X="12.25" Y="15.25" Width="1.5" />
+    <Position X="10.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAABAAAAAAAAAAAAEQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Map\Map.cs</FileName>
@@ -80,14 +80,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="snake_v1.Models.Map.MapGenerator" Collapsed="true">
-    <Position X="22.25" Y="4" Width="1.5" />
+    <Position X="20.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAA=</HashCode>
       <FileName>Models\Map\MapGenerator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="snake_v1.Models.Menu.Menu" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="17" Y="5" Width="1.5" />
+    <Position X="15.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAgAAAAAAAAAAAACAAAABAAAAAAAAAAA=</HashCode>
       <FileName>Models\Menu\Menu.cs</FileName>
@@ -95,7 +95,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="snake_v1.Models.Menu.MenuItem" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="18.75" Y="5" Width="1.5" />
+    <Position X="17.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAgAAAAAAAAAAAAEAAAAAAAAAiAAAaAg=</HashCode>
       <FileName>Models\Menu\MenuItem.cs</FileName>
@@ -103,189 +103,189 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="snake_v1.Models.Direction" Collapsed="true">
-    <Position X="17" Y="4" Width="1.5" />
+    <Position X="15.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAACAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Direction.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="snake_v1.Models.Game" Collapsed="true">
-    <Position X="18.75" Y="4" Width="1.5" />
+    <Position X="17.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAIAACAAAAAAAAAQAAAAAEAAAAAAAAAAAQAAAAA=</HashCode>
+      <HashCode>AAAAEAIAACAAAAAAAAAQAAAAAEAAAAAACAAAAQAAAAA=</HashCode>
       <FileName>Models\Game.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="snake_v1.Models.GameSpeedController" Collapsed="true">
-    <Position X="20.5" Y="4" Width="1.5" />
+    <Position X="19" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
       <FileName>Models\GameSpeedController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="snake_v1.Models.TouchControl" Collapsed="true">
-    <Position X="17" Y="6" Width="1.5" />
+  <Class Name="snake_v1.Models.Snake" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\TouchControl.cs</FileName>
+      <HashCode>AAAAAAQAAIAAAAAACCAAAAAAAAgAACBAAAACEACAAAA=</HashCode>
+      <FileName>Models\Snake.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="snake_v1.Program" Collapsed="true">
-    <Position X="22.25" Y="5" Width="1.5" />
+    <Position X="20.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="snake_v1.Infrastructure.IAngle" Collapsed="true">
-    <Position X="17" Y="7.25" Width="1.5" />
+    <Position X="15.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Infrastructure\GeometricInterfaces\IAngle.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.IDeleteble" Collapsed="true">
-    <Position X="8.5" Y="4" Width="1.5" />
+    <Position X="7" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Infrastructure\GeometricInterfaces\IDeleteble.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.IDisplaceable" Collapsed="true">
-    <Position X="2" Y="7" Width="1.5" />
+    <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Infrastructure\GeometricInterfaces\IDisplaceable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.IDrawble" Collapsed="true">
-    <Position X="5.5" Y="4" Width="1.5" />
+    <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Infrastructure\GeometricInterfaces\IDrawble.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.IGeometricPrimitive" Collapsed="true">
-    <Position X="2" Y="8.25" Width="1.5" />
+    <Position X="0.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAACAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Infrastructure\GeometricInterfaces\IGeometricPrimitive.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.ILine" Collapsed="true">
-    <Position X="18.75" Y="7.25" Width="1.5" />
+    <Position X="17.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAACAAAgAAAAAA=</HashCode>
       <FileName>Infrastructure\GeometricInterfaces\ILine.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.IPoint" Collapsed="true">
-    <Position X="2.5" Y="5.25" Width="1.5" />
+    <Position X="1" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAaAA=</HashCode>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAaAA=</HashCode>
       <FileName>Infrastructure\GeometricInterfaces\IPoint.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.IRectangle" Collapsed="true">
-    <Position X="14.5" Y="7.25" Width="1.5" />
+    <Position X="13" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Infrastructure\GeometricInterfaces\IRectangle.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.IMap" Collapsed="true">
-    <Position X="8.5" Y="8.5" Width="1.5" />
+    <Position X="7" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Infrastructure\MapInterfaces\IMap.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.IMapGenerator" Collapsed="true">
-    <Position X="20.5" Y="7.25" Width="1.5" />
+    <Position X="19" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Infrastructure\MapInterfaces\IMapGenerator.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.IMenu" Collapsed="true">
-    <Position X="7.75" Y="5.25" Width="1.5" />
+    <Position X="6.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAACAAAABAAAAAAAAAAA=</HashCode>
       <FileName>Infrastructure\MapInterfaces\IMenu.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.IMenuItem" Collapsed="true">
-    <Position X="5.5" Y="7.25" Width="1.5" />
+    <Position X="4" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>Infrastructure\MapInterfaces\IMenuItem.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.IMovable" Collapsed="true">
-    <Position X="13" Y="4" Width="1.5" />
+    <Position X="11.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Infrastructure\IMovable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.IRigidBody" Collapsed="true">
-    <Position X="8.5" Y="7" Width="1.5" />
+    <Position X="7" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
       <FileName>Infrastructure\IRigidBody.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.IStartPoint" Collapsed="true">
-    <Position X="11.5" Y="6" Width="1.5" />
+    <Position X="10" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Infrastructure\IStartPoint.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.GeometricInterfaces.IGameObject" Collapsed="true">
-    <Position X="5.5" Y="5.25" Width="1.5" />
+    <Position X="4.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAg=</HashCode>
       <FileName>Infrastructure\GeometricInterfaces\IGameObject.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="snake_v1.Infrastructure.GeometricInterfaces.ITravelHistory" Collapsed="true">
-    <Position X="10.75" Y="4" Width="1.5" />
+    <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Infrastructure\GeometricInterfaces\ITravelHistory.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="snake_v1.Enums.AngleType" Collapsed="true">
-    <Position X="17" Y="8.25" Width="1.5" />
+    <Position X="15.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAACAAAAABAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Enums\AngleType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="snake_v1.Enums.ItemTypes" Collapsed="true">
-    <Position X="18.75" Y="8.25" Width="1.5" />
+    <Position X="17.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Enums\ItemTypes.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="snake_v1.Enums.LineType" Collapsed="true">
-    <Position X="20.5" Y="8.25" Width="1.5" />
+    <Position X="19" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAABAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Enums\LineType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="snake_v1.Enums.MapType" Collapsed="true">
-    <Position X="22.25" Y="8.25" Width="1.5" />
+    <Position X="20.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Enums\MapType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="snake_v1.Enums.MoveDirection" Collapsed="true">
-    <Position X="17" Y="9" Width="1.5" />
+    <Position X="15.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAI=</HashCode>
       <FileName>Enums\MoveDirection.cs</FileName>

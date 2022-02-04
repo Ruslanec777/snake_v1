@@ -55,5 +55,10 @@ namespace snake_v1.Models.GeometricPrimitives
 
             Points.Add(point);
         }
+
+        public override void TransformMotionSimulation(MoveDirection direction)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

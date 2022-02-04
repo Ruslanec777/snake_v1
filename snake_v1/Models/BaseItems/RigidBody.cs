@@ -1,5 +1,6 @@
 ﻿using snake_v1.Enums;
 using snake_v1.Infrastructure;
+using snake_v1.Models.GeometricPrimitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace snake_v1.Models.BaseItems
 
         public RigidBody(int x, int y, IGeometricPrimitive figur) : base(x, y, figur)
         {
-            
+            Color = figur.Color;
         }
 
         public RigidBody(int x, int y, IGeometricPrimitive figur, char symbol) : base(x, y, figur, symbol)
@@ -45,7 +46,7 @@ namespace snake_v1.Models.BaseItems
 
         public bool IsHit(IPoint point)
         {
-            return Points.Any(point => this.IsHit(point));
+            return Points.Any(p => p.IsHit(point));
         }
 
 

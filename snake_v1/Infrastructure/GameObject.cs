@@ -1,6 +1,7 @@
 ﻿using snake_v1.Enums;
 using snake_v1.Infrastructure.GeometricInterfaces;
 using snake_v1.Models.BaseItems;
+using snake_v1.Models.GeometricPrimitives;
 using System;
 using System.Collections.Generic;
 
@@ -12,23 +13,27 @@ namespace snake_v1.Infrastructure
     public abstract class GameObject : IStartPoint, IGameObject
     {
         private List<IPoint> tempPoints;
-        public List<IPoint> Points
+
+        //TODO преобразовать в метод
+        public virtual List<IPoint> Points
         {
             get
             {
                 tempPoints = new List<IPoint>();
 
-                foreach (var point in Figur.Points)
+                foreach (var pointTemp in Figur.Points)
                 {
-                    point.X += Figur.OffSet.X;
-                    point.Y += Figur.OffSet.Y;
+                    IPoint point = (IPoint)pointTemp.Clone();
+
+                    point.X = point.X+ Figur.OffSet.X + StartPoint.X;
+                    point.Y = point.Y+ Figur.OffSet.Y + StartPoint.Y;
                     point.Color = Figur.Color;
 
                     tempPoints.Add(point);
                 }
                 return tempPoints;
             }
-            set { }
+        set { }
         }
 
         public IGeometricPrimitive Figur { get; set; } //= new Line(23, LineType.Horizontal);
@@ -38,7 +43,9 @@ namespace snake_v1.Infrastructure
 
         public GameObject()
         {
-            Points = new();
+            //TODO не понятное исключение
+            Points = new List<IPoint>();
+            Figur = new PointGeomPrimit(ConsoleColor.Black ,' ');
         }
 
         public GameObject(int x, int y) : this()
@@ -53,7 +60,7 @@ namespace snake_v1.Infrastructure
         {
             Figur = figur;
 
-            InicialPoints(Figur.Points);
+          //  InicialPoints(Figur.Points);
         }
 
 
@@ -90,10 +97,15 @@ namespace snake_v1.Infrastructure
 
             Console.ForegroundColor = Figur.Color;
             // TODO меняется ли сам Figur?
+            //foreach (var point in Points)
+            //{
+            //    point.X += StartPoint.X;
+            //    point.Y += StartPoint.Y;
+            //    point.Draw();
+            //}
+
             foreach (var point in Points)
             {
-                point.X += StartPoint.X;
-                point.Y += StartPoint.Y;
                 point.Draw();
             }
 
@@ -109,7 +121,7 @@ namespace snake_v1.Infrastructure
             }
         }
 
-        public void Move(MoveDirection direction, int count)
+        public virtual void Move(MoveDirection direction, int count)
         {
             foreach (var point in Points)
             {

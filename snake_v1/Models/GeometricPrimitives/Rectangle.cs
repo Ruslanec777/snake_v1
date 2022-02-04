@@ -64,5 +64,10 @@ namespace snake_v1.Models.GeometricPrimitives
                 TakeOnFigure(geometricFigure);
             }
         }
+
+        public override void TransformMotionSimulation(MoveDirection direction)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

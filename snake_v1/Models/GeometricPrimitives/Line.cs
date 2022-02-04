@@ -18,10 +18,9 @@ namespace snake_v1.Models.GeometricPrimitives
         public int Length { get; set; }
         public LineType TypeLine { get; set; }
         //TODO как унаследовать присвоение new() ?
-        public ConsoleColor Color { get ; set ; }
+        //public ConsoleColor Color { get ; set ; }
 
-        public Line( int length, LineType lineType)
-            
+        public Line( int length, LineType lineType)          
         {
             Length = length;
             TypeLine = lineType;
@@ -58,5 +57,9 @@ namespace snake_v1.Models.GeometricPrimitives
             }
         }
 
+        public override void TransformMotionSimulation(MoveDirection direction)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -82,6 +82,29 @@ namespace snake_v1.Models.BaseItems
             }
         }
 
+        public void MoveBack(MoveDirection direction, int count)
+        {
+            LastMove = direction;
+
+            switch (direction)
+            {
+                case MoveDirection.Up:
+                    Y += count;
+                    break;
+                case MoveDirection.Right:
+                    X -= count;
+                    break;
+                case MoveDirection.Down:
+                    Y -= count;
+                    break;
+                case MoveDirection.Left:
+                    X += count;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         public void Delete()
         {
             Symbol = ' ';
@@ -93,7 +116,6 @@ namespace snake_v1.Models.BaseItems
             return new Point(X, Y, Symbol, Color);
         }
 
-
         public void Draw()
         {
             Console.ForegroundColor = Color;
@@ -102,6 +124,11 @@ namespace snake_v1.Models.BaseItems
             Console.Write(Symbol);
 
             Console.ResetColor();
+        }
+
+        public bool IsHit(IPoint point )
+        {
+           return X == point.X && Y == point.Y;
         }
     }
 }

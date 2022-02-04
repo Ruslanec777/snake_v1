@@ -12,7 +12,6 @@
     <Compile Remove="Infrastructure\RigidObject.cs" />
     <Compile Remove="Models\BaseItems\RigidPoint.cs" />
     <Compile Remove="Models\Level1.cs" />
-    <Compile Remove="Models\Snake.cs" />
   </ItemGroup>
 
 </Project>

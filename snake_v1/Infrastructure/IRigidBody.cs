@@ -12,7 +12,7 @@ namespace snake_v1.Infrastructure
     {
         // public List<IRigidPoint> Points { get; }
 
-        bool IsHit(IRigidBody rigidBody);
+        public bool IsHit(IRigidBody rigidBody);
 
         public bool IsHit(IPoint point);
 

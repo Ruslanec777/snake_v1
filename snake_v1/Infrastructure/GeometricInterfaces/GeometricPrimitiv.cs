@@ -1,4 +1,6 @@
-﻿using snake_v1.Models.BaseItems;
+﻿using snake_v1.Enums;
+using snake_v1.Infrastructure.GeometricInterfaces;
+using snake_v1.Models.BaseItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public abstract class GeometricPrimitiv : IGeometricPrimitive
+    public abstract class GeometricPrimitiv : IGeometricPrimitive 
     {
         public List<IPoint> Points { get; set; }
 
@@ -60,5 +62,7 @@ namespace snake_v1.Infrastructure
         {
             Points.Add(point);
         }
+
+        public abstract void TransformMotionSimulation(MoveDirection direction);
     }
 }

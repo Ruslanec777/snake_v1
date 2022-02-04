@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public interface IMap : IRigidBody, IRectangle, IStartPoint
+    public interface IMap : IRigidBody, IRectangle
     {
         string Name { get; }
+        IRigidBody Frut { get; set; }
 
+        void GenerateNewFruit();
 
         /// <summary>
         /// соприкосновение с картой 

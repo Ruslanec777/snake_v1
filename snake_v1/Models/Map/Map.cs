@@ -1,5 +1,6 @@
 ﻿using snake_v1.Infrastructure;
 using snake_v1.Models.BaseItems;
+using snake_v1.Models.GeometricPrimitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,21 @@ namespace snake_v1.Models.Map
 
         public string Name { get; set; }
 
-        public Map(int x, int y, string name, IGeometricPrimitive figur)
-             : base(x, y, figur)
+        public IRigidBody Frut { get; set; }
+
+        public Map(int x, int y, string name, IRectangle figur)
+             : base(x, y,(IGeometricPrimitive) figur)
         {
             Name = name;
+            Height = figur.Height;
+            Width = figur.Width;
+        }
+
+        public void GenerateNewFruit()
+        {
+            Random rnd = new Random();
+            Frut = new RigidBody(rnd.Next(StartPoint.X+1, StartPoint.X + Width-1), rnd.Next(StartPoint.Y+1, StartPoint.Y + Height-1), new PointGeomPrimit(ConsoleColor.Red , '$'));
+            Frut.Draw();
         }
     }
 }

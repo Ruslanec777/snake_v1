@@ -31,7 +31,7 @@ namespace snake_v1.Models.Map
 
         private static Map GenerateBox(int x, int y, int width, int height, ConsoleColor color)
         {
-            GeometricPrimitiv borders = new Rectangle(width, height, color);
+            IRectangle borders = new Rectangle(width, height, color);
 
             return new Map(x, y, "Box", borders);
         }
