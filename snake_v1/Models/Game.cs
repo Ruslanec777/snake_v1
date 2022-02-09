@@ -3,6 +3,7 @@ using snake_v1.Infrastructure;
 using snake_v1.Models.BaseItems;
 using snake_v1.Models.GeometricPrimitives;
 using snake_v1.Models.Map;
+using snake_v1.Models.Menu;
 using System;
 using static snake_v1.Models.Direction;
 //TODO вернуть 
@@ -21,19 +22,23 @@ namespace snake_v1.Models
 
         private static bool _directionChaged = false;
         private const byte WINDOWHIGHT = 30;
-        private const byte WINDOWWIDTH = 30;
+        private const byte WINDOWWIDTH = 100;
+        // TODO как присвоить тип интерфейса ?
+        private static MenuItem _tempMenu;
 
         public static void Stert()
         {
+            // InitMainMenu();
+
+            _tempMenu = new MenuItem(80, 3, ConsoleColor.Green, "drdurdutfyfy");
+            _tempMenu.Draw();
 
             initGame();
 
             while (true)
             {
                 Console.CursorVisible = false;
-
-                
-
+               
                 if (Console.KeyAvailable)
                 {
                     snake.ChangeDirection(Console.ReadKey(true).Key);
@@ -59,9 +64,15 @@ namespace snake_v1.Models
             }
         }
 
+        private static void InitMainMenu()
+        {
+            throw new NotImplementedException();
+        }
+
         private static void TouchCheck()
         {
-            if (map.IsHit(snake.Head) /*|| snake.IsHit(snake.Head)*/)
+            
+            if (map.IsHit(snake.Head) || snake.IsHitTail())
             {
                 _gameOver = true;
             }
@@ -72,8 +83,6 @@ namespace snake_v1.Models
                 map.Frut.Delete();
                 map.GenerateNewFruit();
             }
-
-
         }
 
         private static void initGame()
@@ -81,7 +90,10 @@ namespace snake_v1.Models
             Console.Clear();
             Console.CursorVisible = false;
             currentDirection = Enums.MoveDirection.Right;
-            Console.SetWindowSize(WINDOWWIDTH+1, WINDOWHIGHT+1);
+            Console.SetWindowSize(WINDOWWIDTH, WINDOWHIGHT+1);
+
+            //_tempMenu = new MenuItem(0, 0, WINDOWWIDTH-1, 4, ConsoleColor.Blue, "Prob prob");
+            //_tempMenu.Draw();
 
 
             map = MapGenerator.Generate(Enums.MapType.Box, 1, 4, WINDOWWIDTH, WINDOWHIGHT, ConsoleColor.Yellow);
@@ -97,7 +109,5 @@ namespace snake_v1.Models
             snake = new Snake(20, 20, 5, MoveDirection.Left, ConsoleColor.Green);
             snake.Draw();
         }
-
-
     }
 }

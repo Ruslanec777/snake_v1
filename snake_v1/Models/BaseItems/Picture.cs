@@ -27,9 +27,20 @@ namespace snake_v1.Models.BaseItems
         {
         }
 
+        public Picture(int x, int y, IGeometricPrimitive figur ,ConsoleColor color) : base(x, y, figur)
+        {
+            Figur.Color = color;
+            Color = color;
+        }
+
         public Picture(int x, int y, IGeometricPrimitive figur, char symbol, ConsoleColor color) : base(x, y, figur, symbol, color)
         {
         }
+
+
+
+
+
 
         public object Clone()
         {

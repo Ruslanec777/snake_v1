@@ -1,46 +1,73 @@
 ﻿using snake_v1.Enums;
 using snake_v1.Infrastructure;
+using snake_v1.Models.BaseItems;
+using snake_v1.Models.GeometricPrimitives;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace snake_v1.Models.Menu
 {
-    class MenuItem : IMenuItem
+    //TODO как организовать наследование что бы создавать переменную типа интерфейса ?
+    class MenuItem : Picture, IMenuItem
     {
-        public string Text { get ; set; }
-        public int X { get; set ; }
-        public int Y { get; set; }
-
-        public ConsoleColor Color => throw new NotImplementedException();
-
-        public char Symbol => throw new NotImplementedException();
-
-        public IPoint StartPoint { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public void Delete()
+        private string _text;
+        public string Text
         {
-            Console.SetCursorPosition(X, Y);
-            
-            //Text.Lengt
-            for (int i = 0; i < Text.Length; i++)
+            get { return _text; }
+            set
             {
-                Console.Write(' ');
+                _text = value;
+                Console.SetCursorPosition(StartPoint.X + Width / 2 - _text.Length / 2, StartPoint.Y + Height / 2);
+                Console.Write(Text);
             }
-                
         }
 
-        public void Draw()
+        public int Width { get; set; }
+        public int Height { get; set; }
+
+        public Vector2D BottomLeftEdge
         {
-            Console.SetCursorPosition(X, Y);
-            Console.WriteLine($"{Text}");
+            get
+            {
+                return new Vector2D(StartPoint.X, StartPoint.Y + Height);
+            }
         }
 
-        public void Move(MoveDirection direction, int count)
+        public Vector2D BottomRightEdge
         {
-            throw new NotImplementedException();
+            get
+            {
+                return new Vector2D(StartPoint.X+Width, StartPoint.Y + Height);
+            }
         }
+
+        public MenuItem(int WidthPercentage ,int TopMargin, ConsoleColor color, string text) 
+                 : base((Console.WindowWidth- (Console.WindowWidth/100)*WidthPercentage)/2, TopMargin, new Rectangle((Console.WindowWidth / 100) * WidthPercentage, 3), color)
+        {
+            //StartPoint.X = x;
+            //StartPoint.Y = y;
+            Width = (Console.WindowWidth / 100) * WidthPercentage;
+            Height = 3;
+            //Figur = new Rectangle(width, height, color);
+            Text = text;
+        }
+
+        //public void Delete()
+        //{
+        //    Console.SetCursorPosition(X, Y);
+
+        //    //Text.Lengt
+        //    for (int i = 0; i < Text.Length; i++)
+        //    {
+        //        Console.Write(' ');
+        //    }
+
+        //}
+
+        //public void Draw()
+        //{
+        //    Console.SetCursorPosition(X, Y);
+        //    Console.WriteLine($"{Text}");
+        //}
+
     }
 }

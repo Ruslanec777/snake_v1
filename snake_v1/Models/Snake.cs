@@ -12,7 +12,7 @@ using static snake_v1.Models.Direction;
 
 namespace snake_v1.Models
 {
-    public class Snake: RigidBody
+    public class Snake : RigidBody
     {
         private char _headSymol = '0';
         private char _tailSymbol = '*';
@@ -21,7 +21,41 @@ namespace snake_v1.Models
 
         public override List<IPoint> Points { get; set; }
 
-        public IPoint Head { get
+        public RigidBody Tail
+        {
+            get
+            {
+                RigidBody TailRigidBody = new(0, 0);
+
+                IPoint[] points = new IPoint[Points.Count - 2];
+
+                Points.RemoveAt(0);
+                Points.RemoveRange( Points.Count - 1 ,1);
+                Points.CopyTo(0, points, 0, Points.Count );
+
+                TailRigidBody.Figur.Points.Clear();
+                TailRigidBody.Figur.Points.AddRange(points);
+
+                return TailRigidBody;
+            }
+        }
+
+        public bool IsHitTail()
+        {
+
+            foreach (var item in Points.Where(x=>x!=Head && x!=Points.Last()))
+            {
+                if (item.IsHit(Head))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public IPoint Head
+        {
+            get
             {
                 return Points[0];
             }
@@ -68,7 +102,7 @@ namespace snake_v1.Models
         //      }*/
         //}
 
-        public  void SnakeAddItem()
+        public void SnakeAddItem()
         {
             Points.RemoveAt(Points.Count - 1);
 
@@ -81,7 +115,7 @@ namespace snake_v1.Models
         /// Добавляем элемени в змейку с учетом движения хвоста
         /// </summary>
         /// <param name="point">элемент к которому цепляется новое звено</param>
-        private  void SnakeAddItemBody(IPoint point)
+        private void SnakeAddItemBody(IPoint point)
         {
             switch (point.LastMove)
             {
@@ -102,7 +136,7 @@ namespace snake_v1.Models
             }
         }
 
-        private  void SnakeAddItemSpace(IPoint point)
+        private void SnakeAddItemSpace(IPoint point)
         {
             switch (point.LastMove)
             {
@@ -123,7 +157,7 @@ namespace snake_v1.Models
             }
         }
 
-        public  void Move()
+        public void Move()
         {
             SnakeMovesNextStep();
             //PaintSnake();
@@ -133,7 +167,7 @@ namespace snake_v1.Models
         {
             foreach (Point item in Points)
             {
-               // item.Drow();
+                // item.Drow();
             }
         }
 
@@ -142,14 +176,14 @@ namespace snake_v1.Models
             IPoint pointForNextStep = null;
             IPoint tempPoint;
 
-            for (int i = 0; i < Points .Count; i++)
+            for (int i = 0; i < Points.Count; i++)
             {
                 //есть ли способ скопировать объект?
                 //сохраняем точку для перемещения следующему звену
 
                 if (i == 0)
                 {
-                    pointForNextStep = new Point(Points[i].X, Points[i].Y, Points[i].Symbol,Color );
+                    pointForNextStep = new Point(Points[i].X, Points[i].Y, Points[i].Symbol, Color);
                     Points[i].Move(Direction, 1);
                     continue;
                 }
@@ -159,7 +193,7 @@ namespace snake_v1.Models
 
                 tempPoint = Points[i];
 
-                MoveDirection tempDirection= DetermineMovementPoint( Points[i],pointForNextStep);
+                MoveDirection tempDirection = DetermineMovementPoint(Points[i], pointForNextStep);
 
                 Points[i] = pointForNextStep;
                 Points[i].Symbol = tempPoint.Symbol;
@@ -195,7 +229,7 @@ namespace snake_v1.Models
             return directionPoint;
         }
 
-        public override void Move(MoveDirection moveDirection,int count)
+        public override void Move(MoveDirection moveDirection, int count)
         {
             switch (Direction)
             {
@@ -223,7 +257,7 @@ namespace snake_v1.Models
             //DeleteTail();
             //AddHead();
             ////_head.Draw();
-           // this.Draw();
+            // this.Draw();
         }
 
         private void DeleteTail()
@@ -278,21 +312,21 @@ namespace snake_v1.Models
                     }
                     break;
                 case ConsoleKey.RightArrow:
-                    if (Direction != MoveDirection.Left && Direction !=MoveDirection.Right)
+                    if (Direction != MoveDirection.Left && Direction != MoveDirection.Right)
                     {
                         Direction = MoveDirection.Right;
                         //Figur.TransformMotionSimulation(Direction);
                     }
                     break;
                 case ConsoleKey.DownArrow:
-                    if (Direction != MoveDirection.Up && Direction !=MoveDirection.Down)
+                    if (Direction != MoveDirection.Up && Direction != MoveDirection.Down)
                     {
                         Direction = MoveDirection.Down;
                         //Figur.TransformMotionSimulation(Direction);
                     }
                     break;
                 case ConsoleKey.UpArrow:
-                    if (Direction != MoveDirection.Down && Direction!=MoveDirection.Up)
+                    if (Direction != MoveDirection.Down && Direction != MoveDirection.Up)
                     {
                         Direction = MoveDirection.Up;
                         //Figur.TransformMotionSimulation(Direction);
