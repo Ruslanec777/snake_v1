@@ -7,28 +7,18 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Models.Menu
 {
-    class Menu : IMenu
+    public abstract class Menu : IMenu
     {
-
-
-        public void AddScore()
-        {
-            throw new NotImplementedException();
-        }
+        public IList<IMenuItem> MenuItems { get ; set ; }
 
         public void Draw()
         {
-            throw new NotImplementedException();
+            foreach (var menuItem in MenuItems)
+            {
+                menuItem.Draw();
+            }           
         }
 
-        public void ResetScore()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void WriteGameOver()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Init();
     }
 }

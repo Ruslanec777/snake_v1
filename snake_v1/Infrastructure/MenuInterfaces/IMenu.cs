@@ -8,14 +8,8 @@ namespace snake_v1.Infrastructure
 {
     interface IMenu:IDrawble
     {
+        IList<IMenuItem> MenuItems { get; set; }
 
-
-        void ResetScore();
-
-        void AddScore();
-
-        void WriteGameOver();
-
-
+        void Init();
     }
 }

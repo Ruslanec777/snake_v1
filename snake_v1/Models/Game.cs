@@ -21,14 +21,18 @@ namespace snake_v1.Models
         private static bool _gameOver=default;
 
         private static bool _directionChaged = false;
+        private const byte WINDOWWIDTH = 70;
         private const byte WINDOWHIGHT = 30;
-        private const byte WINDOWWIDTH = 100;
         // TODO как присвоить тип интерфейса ?
         private static MenuItem _tempMenu;
 
         public static void Stert()
         {
             // InitMainMenu();
+            Console.Clear();
+            Console.CursorVisible = false;
+
+            Console.SetWindowSize(WINDOWWIDTH, WINDOWHIGHT + 1);
 
             _tempMenu = new MenuItem(80, 3, ConsoleColor.Green, "drdurdutfyfy");
             _tempMenu.Draw();
