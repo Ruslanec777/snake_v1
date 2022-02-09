@@ -17,9 +17,19 @@ namespace snake_v1.Models.BaseItems
             Y = y;
         }
 
-        public static implicit operator Vector2D((int, int) v)
+        public Vector2D Sub(Vector2D vector2D)
         {
-            throw new NotImplementedException();
+            return new Vector2D(X - vector2D.X, Y - vector2D.Y);
+        }
+
+        public Vector2D Sum(Vector2D vector2D)
+        {
+            return new Vector2D(X + vector2D.X, Y + vector2D.Y);
+        }
+
+        public Vector2D Abs()
+        {
+            return new Vector2D(Math.Abs( X), Math.Abs(Y));
         }
     }
 }

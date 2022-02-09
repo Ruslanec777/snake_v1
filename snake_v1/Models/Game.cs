@@ -3,7 +3,7 @@ using snake_v1.Infrastructure;
 using snake_v1.Models.BaseItems;
 using snake_v1.Models.GeometricPrimitives;
 using snake_v1.Models.Map;
-using snake_v1.Models.Menu;
+using snake_v1.Models.MenuWindows;
 using System;
 using static snake_v1.Models.Direction;
 //TODO вернуть 
@@ -18,24 +18,19 @@ namespace snake_v1.Models
 
         public static IMap map;
 
+        public static string Nic= "Player";
+
         private static bool _gameOver=default;
 
         private static bool _directionChaged = false;
-        private const byte WINDOWWIDTH = 70;
-        private const byte WINDOWHIGHT = 30;
+        internal const byte WINDOWWIDTH = 100;
+        internal const byte WINDOWHIGHT = 40;
         // TODO как присвоить тип интерфейса ?
         private static MenuItem _tempMenu;
 
         public static void Stert()
         {
-            // InitMainMenu();
-            Console.Clear();
-            Console.CursorVisible = false;
-
-            Console.SetWindowSize(WINDOWWIDTH, WINDOWHIGHT + 1);
-
-            _tempMenu = new MenuItem(80, 3, ConsoleColor.Green, "drdurdutfyfy");
-            _tempMenu.Draw();
+            IMenu menu=new MainMenu();
 
             initGame();
 
@@ -55,6 +50,7 @@ namespace snake_v1.Models
                 if (_gameOver)
                 {
                     Console.SetCursorPosition(3, 2);
+
                     Console.WriteLine("Game Over");
                     Console.ReadLine();
                     break;

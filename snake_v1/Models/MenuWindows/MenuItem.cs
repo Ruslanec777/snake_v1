@@ -4,7 +4,7 @@ using snake_v1.Models.BaseItems;
 using snake_v1.Models.GeometricPrimitives;
 using System;
 
-namespace snake_v1.Models.Menu
+namespace snake_v1.Models.MenuWindows
 {
     //TODO как организовать наследование что бы создавать переменную типа интерфейса ?
     class MenuItem : Picture, IMenuItem
@@ -21,10 +21,14 @@ namespace snake_v1.Models.Menu
                 {
                     case Align.Centre:
                         Console.SetCursorPosition(StartPoint.X + Width / 2 - _text.Length / 2, StartPoint.Y + Height / 2);
+
+                        PointOfInput = new Vector2D(StartPoint.X + Width / 2 + _text.Length / 2 + 2, StartPoint.Y + Height / 2);
                         break;
 
                     case Align.left:
                         Console.SetCursorPosition(StartPoint.X + 2, StartPoint.Y + Height / 2);
+
+                        PointOfInput = new Vector2D(StartPoint.X + 4 + Text.Length, StartPoint.Y + Height / 2);
                         break;
 
                     default:
@@ -33,6 +37,8 @@ namespace snake_v1.Models.Menu
                 Console.Write(Text);
             }
         }
+
+        protected Vector2D PointOfInput { get; set; }
 
         public int Width { get; set; }
         public int Height { get; set; }
@@ -57,7 +63,7 @@ namespace snake_v1.Models.Menu
         public Align AlignText { get; set; }
 
         public MenuItem(string name, int WidthPercentage, int TopMargin, ConsoleColor color, string text)
-                 : base((Console.WindowWidth - ((Console.WindowWidth * WidthPercentage) / 100)) / 2, TopMargin, new Rectangle(Console.WindowWidth * WidthPercentage / 100, 3), color)
+                 : base((Console.WindowWidth - Console.WindowWidth * WidthPercentage / 100) / 2, TopMargin, new Rectangle(Console.WindowWidth * WidthPercentage / 100, 3), color)
         {
             //StartPoint.X = x;
             //StartPoint.Y = y;
@@ -68,14 +74,32 @@ namespace snake_v1.Models.Menu
             Name = name;
         }
 
-        public MenuItem(string name, int WidthPercentage, int TopMargin, IMenuItem menuItem, ConsoleColor color, string text, Align alignText)
-         : base((Console.WindowWidth - ((Console.WindowWidth * WidthPercentage) / 100)) / 2, TopMargin + menuItem.BottomLeftEdge.Y, new Rectangle(Console.WindowWidth * WidthPercentage / 100, 3), color)
+        public MenuItem(string name, int WidthPercentage, int TopMargin, IMenuItem menuItem, ConsoleColor color, string text, Align alignText = Align.Centre)
+         : base((Console.WindowWidth - Console.WindowWidth * WidthPercentage / 100) / 2, TopMargin + menuItem.BottomLeftEdge.Y, new Rectangle(Console.WindowWidth * WidthPercentage / 100, 3), color)
         {
             Width = Console.WindowWidth * WidthPercentage / 100;
             Height = 3;
+            AlignText = alignText;
             Text = text;
             Name = name;
-            AlignText = alignText;
         }
+
+        public MenuItem(string name, Vector2D startPoint, Vector2D widthHeight, ConsoleColor color, string text, Align alignText = Align.Centre)
+                 : base(startPoint, widthHeight, color)
+        {
+            Width = widthHeight.X;
+            Height = widthHeight.Y;
+
+            AlignText = alignText;
+            Text = text;
+            Name = name;
+        }
+
+        protected void ClearText()
+        {
+            Text = 
+        }
+
+
     }
 }
