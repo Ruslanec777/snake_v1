@@ -5,7 +5,7 @@ using System;
 
 namespace snake_v1.Models.MenuWindows
 {
-    internal class MenuItemInput : MenuItem
+    internal class MenuItemInput : MenuItemLabel
     {
 
         public MenuItemInput(string name, Vector2D startPoint, Vector2D widthHeight, ConsoleColor color, string text, ref string returnedValue, Align alignText = Align.Centre)

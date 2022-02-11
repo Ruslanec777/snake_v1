@@ -7,7 +7,7 @@ using System;
 namespace snake_v1.Models.MenuWindows
 {
     //TODO как организовать наследование что бы создавать переменную типа интерфейса ?
-    class MenuItem : Picture, IMenuItem
+    class MenuItemLabel : Picture, IMenuItem 
     {
         private string _text;
         public string Text
@@ -68,7 +68,7 @@ namespace snake_v1.Models.MenuWindows
         public string Name { get; set; }
         public Align AlignText { get; set; }
 
-        public MenuItem(string name, int WidthPercentage, int TopMargin, ConsoleColor color, string text)
+        public MenuItemLabel(string name, int WidthPercentage, int TopMargin, ConsoleColor color, string text)
                  : base((Console.WindowWidth - Console.WindowWidth * WidthPercentage / 100) / 2, TopMargin, new Rectangle(Console.WindowWidth * WidthPercentage / 100, 3), color)
         {
             //StartPoint.X = x;
@@ -80,7 +80,7 @@ namespace snake_v1.Models.MenuWindows
             Name = name;
         }
 
-        public MenuItem(string name, int WidthPercentage, int TopMargin, IMenuItem menuItem, ConsoleColor color, string text, Align alignText = Align.Centre)
+        public MenuItemLabel(string name, int WidthPercentage, int TopMargin, IMenuItem menuItem, ConsoleColor color, string text, Align alignText = Align.Centre)
          : base((Console.WindowWidth - Console.WindowWidth * WidthPercentage / 100) / 2, TopMargin + menuItem.BottomLeftEdge.Y, new Rectangle(Console.WindowWidth * WidthPercentage / 100, 3), color)
         {
             Width = Console.WindowWidth * WidthPercentage / 100;
@@ -90,7 +90,7 @@ namespace snake_v1.Models.MenuWindows
             Name = name;
         }
 
-        public MenuItem(string name, Vector2D startPoint, Vector2D widthHeight, ConsoleColor color, string text, Align alignText = Align.Centre)
+        public MenuItemLabel(string name, Vector2D startPoint, Vector2D widthHeight, ConsoleColor color, string text, Align alignText = Align.Centre)
                  : base(startPoint, widthHeight, color)
         {
             Width = widthHeight.X;
@@ -111,6 +111,33 @@ namespace snake_v1.Models.MenuWindows
                     Console.Write(" ");
                 }
             }
+        }
+
+        public override void Draw()
+        {
+            if (Figur.Points.Count == 0)
+            {
+                return;
+            }
+            ConsoleColor tempConsoleColor = Console.ForegroundColor;
+
+            Console.ForegroundColor = Color;
+            // TODO меняется ли сам Figur?
+            //foreach (var point in Points)
+            //{
+            //    point.X += StartPoint.X;
+            //    point.Y += StartPoint.Y;
+            //    point.Draw();
+            //}
+
+            foreach (var point in Points)
+            {
+                point.Color = Color;
+                point.Draw();
+            }
+
+            Console.ResetColor();
+            Console.ForegroundColor = tempConsoleColor;
         }
 
 

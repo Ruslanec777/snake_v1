@@ -27,23 +27,23 @@ namespace snake_v1.Models.MenuWindows
 
                 MenuItems.Clear();
 
-                MenuItems.Add(new MenuItem("Header", 95, 1, ConsoleColor.Red, "Змейка"));
+                MenuItems.Add(new MenuItemLabel("Header", 95, 1, ConsoleColor.Red, "Змейка"));
 
-                MenuItems.Add(new MenuItem("SelectedMap", 80, TopMargin: 1, MenuItems.Last(), Console.BackgroundColor, "Выбранная карта: карта со стенами", Align.left));
+                MenuItems.Add(new MenuItemLabel("SelectedMap", 80, TopMargin: 1, MenuItems.Last(), Console.BackgroundColor, "Выбранная карта: карта со стенами", Align.left));
 
-                MenuItems.Add(new MenuItem("Play", 80, TopMargin: 0, MenuItems.Last(), ConsoleColor.Green, "1. Играть", Align.left));
+                MenuItems.Add(new MenuItemLabel("Play", 80, TopMargin: 0, MenuItems.Last(), ConsoleColor.Green, "1. Играть", Align.left));
 
-                MenuItems.Add(new MenuItem("ChangNic", 80, TopMargin: 0, MenuItems.Last(), ConsoleColor.Green, "2. Смена игрока", Align.left));
+                MenuItems.Add(new MenuItemLabel("ChangNic", 80, TopMargin: 0, MenuItems.Last(), ConsoleColor.Green, "2. Смена игрока", Align.left));
 
-                MenuItems.Add(new MenuItem("MapSelect", 80, TopMargin: 0, MenuItems.Last(), ConsoleColor.Green, "3. Выбор карты", Align.left));
+                MenuItems.Add(new MenuItemLabel("MapSelect", 80, TopMargin: 0, MenuItems.Last(), ConsoleColor.Green, "3. Выбор карты", Align.left));
 
-                MenuItems.Add(new MenuItem("Reiting", 80, TopMargin: 0, MenuItems.Last(), ConsoleColor.Green, "4 .Таблица рейтинга", Align.left));
+                MenuItems.Add(new MenuItemLabel("Reiting", 80, TopMargin: 0, MenuItems.Last(), ConsoleColor.Green, "4 .Таблица рейтинга", Align.left));
 
-                MenuItems.Add(new MenuItem("Exit", 80, TopMargin: 0, MenuItems.Last(), ConsoleColor.Green, "5 .Выход", Align.left));
+                MenuItems.Add(new MenuItemLabel("Exit", 80, TopMargin: 0, MenuItems.Last(), ConsoleColor.Green, "5 .Выход", Align.left));
 
-                MenuItems.Add(new MenuItem("Player", 80, TopMargin: 2, MenuItems.Last(), ConsoleColor.Blue, $" Игрок : {Game.Nic}", Align.left));
+                MenuItems.Add(new MenuItemLabel("Player", 80, TopMargin: 2, MenuItems.Last(), ConsoleColor.Blue, $" Игрок : {Game.Nic}", Align.left));
 
-                MenuItems.Add(new MenuItem("Space", 80, TopMargin: 1, MenuItems.Last(), Console.BackgroundColor, $"", Align.left));
+                MenuItems.Add(new MenuItemLabel("Space", 80, TopMargin: 1, MenuItems.Last(), Console.BackgroundColor, $"", Align.left));
 
                 Draw();
 

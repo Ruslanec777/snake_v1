@@ -1,4 +1,5 @@
-﻿using snake_v1.Infrastructure;
+﻿using snake_v1.Enums;
+using snake_v1.Infrastructure;
 using snake_v1.Models.BaseItems;
 using snake_v1.Models.GeometricPrimitives;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Models.Map
 {
-    public class Map : RigidBody, IMap
+    public class Map : RigidBody, IMap ,IMenuItem
     {
         public int Height { get; set; }
 
@@ -18,6 +19,12 @@ namespace snake_v1.Models.Map
         public string Name { get; set; }
 
         public IRigidBody Frut { get; set; }
+        public string Text { get ; set ; }
+        public Align AlignText { get ; set ; }
+
+        public Vector2D BottomLeftEdge { get; set; }
+
+        public Vector2D BottomRightEdge { get; set; }
 
         public Map(int x, int y, string name, IRectangle figur)
              : base(x, y,(IGeometricPrimitive) figur)

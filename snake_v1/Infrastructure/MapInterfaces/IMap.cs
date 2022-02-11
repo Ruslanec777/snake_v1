@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    public interface IMap : IRigidBody, IRectangle
+    public interface IMap : IRigidBody, IMenuItem
     {
-        string Name { get; }
         IRigidBody Frut { get; set; }
 
         void GenerateNewFruit();

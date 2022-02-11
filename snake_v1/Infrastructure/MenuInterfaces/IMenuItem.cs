@@ -10,9 +10,10 @@ namespace snake_v1.Infrastructure
 {
     public interface IMenuItem : IDrawble, IDeleteble, IStartPoint, IRectangle
     {
-        public string Text { get; set; }
 
         public Align AlignText { get; set; }
+
+        public string Text { get; set; }
 
         public string Name { get; set; }
 

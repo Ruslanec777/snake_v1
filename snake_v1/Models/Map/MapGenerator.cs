@@ -33,7 +33,13 @@ namespace snake_v1.Models.Map
         {
             IRectangle borders = new Rectangle(width, height, color);
 
-            return new Map(x, y, "Box", borders);
+            var map= new Map(x, y, "Box", borders);
+
+            map.BottomLeftEdge = new Vector2D(x, y + height);
+
+            map.BottomRightEdge = new Vector2D(x+width, y + height);
+
+            return map;
         }
     }
 }

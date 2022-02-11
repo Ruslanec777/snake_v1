@@ -21,9 +21,9 @@ namespace snake_v1.Models.MenuWindows
 
             MenuItems.Clear();
 
-            MenuItems.Add(new MenuItem("Header", 95, 1, ConsoleColor.Red, "Змейка"));
+            MenuItems.Add(new MenuItemLabel("Header", 95, 1, ConsoleColor.Red, "Змейка"));
 
-            MenuItems.Add(new MenuItem("Player", 80, TopMargin: 2, MenuItems.Last(), ConsoleColor.Blue, $" Игрок : {Game.Nic}", Align.left));
+            MenuItems.Add(new MenuItemLabel("Player", 80, TopMargin: 2, MenuItems.Last(), ConsoleColor.Blue, $" Игрок : {Game.Nic}", Align.left));
 
             Draw();
 
@@ -32,7 +32,7 @@ namespace snake_v1.Models.MenuWindows
 
             Game.Nic = _returnedValue;
 
-            MenuItems.Where(x => x.Name == "Player").ToArray()[0].Text = "" ;
+            MenuItems.Where(x => x.Name == "Player").ToArray()[0].Text = "";
             MenuItems.Where(x => x.Name == "Player").ToArray()[0].Text = "Игрок  :" + _returnedValue;
 
             Thread.Sleep(3000);

@@ -89,7 +89,7 @@ namespace snake_v1.Infrastructure
             }
         }
 
-        public void Draw()
+        public virtual void Draw()
         {
             if (Figur.Points.Count == 0)
             {
@@ -97,7 +97,7 @@ namespace snake_v1.Infrastructure
             }
             ConsoleColor tempConsoleColor = Console.ForegroundColor;
 
-            Console.ForegroundColor = Figur.Color;
+            Console.ForegroundColor = Color;
             // TODO меняется ли сам Figur?
             //foreach (var point in Points)
             //{
