@@ -18,7 +18,7 @@ namespace snake_v1.Models.MenuWindows
         {
             Draw();
 
-            Console.SetCursorPosition(PointOfInput.X, PointOfInput.Y);
+            Console.SetCursorPosition(OffsetInptText.X, OffsetInptText.Y);
 
             return Console.ReadLine().ToString();
         }

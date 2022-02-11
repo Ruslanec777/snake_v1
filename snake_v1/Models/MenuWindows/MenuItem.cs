@@ -15,20 +15,25 @@ namespace snake_v1.Models.MenuWindows
             get { return _text; }
             set
             {
+                ClearText();
                 _text = value;
 
                 switch (AlignText)
                 {
                     case Align.Centre:
-                        Console.SetCursorPosition(StartPoint.X + Width / 2 - _text.Length / 2, StartPoint.Y + Height / 2);
+                        OffsetText = new Vector2D(StartPoint.X + Width / 2 - _text.Length / 2, StartPoint.Y + Height / 2);
 
-                        PointOfInput = new Vector2D(StartPoint.X + Width / 2 + _text.Length / 2 + 2, StartPoint.Y + Height / 2);
+                        Console.SetCursorPosition(OffsetText.X, OffsetText.Y);
+
+                        OffsetInptText = new Vector2D(StartPoint.X + Width / 2 + _text.Length / 2 + 2, StartPoint.Y + Height / 2);
                         break;
 
                     case Align.left:
-                        Console.SetCursorPosition(StartPoint.X + 2, StartPoint.Y + Height / 2);
+                        OffsetText = new Vector2D(StartPoint.X + 2, StartPoint.Y + Height / 2);
 
-                        PointOfInput = new Vector2D(StartPoint.X + 4 + Text.Length, StartPoint.Y + Height / 2);
+                        Console.SetCursorPosition(OffsetText.X, OffsetText.Y);
+
+                        OffsetInptText = new Vector2D(StartPoint.X + 4 + Text.Length, StartPoint.Y + Height / 2);
                         break;
 
                     default:
@@ -38,7 +43,8 @@ namespace snake_v1.Models.MenuWindows
             }
         }
 
-        protected Vector2D PointOfInput { get; set; }
+        protected Vector2D OffsetInptText { get; set; }
+        protected Vector2D OffsetText { get; set; }
 
         public int Width { get; set; }
         public int Height { get; set; }
@@ -97,7 +103,14 @@ namespace snake_v1.Models.MenuWindows
 
         protected void ClearText()
         {
-            Text = 
+            if (Text != null && OffsetText!=null)
+            {
+                Console.SetCursorPosition(OffsetText.X, OffsetText.Y);
+                for (int i = 0; i < Text.Length; i++)
+                {
+                    Console.Write(" ");
+                }
+            }
         }
 
 
