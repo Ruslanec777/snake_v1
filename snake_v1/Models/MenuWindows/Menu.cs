@@ -18,8 +18,11 @@ namespace snake_v1.Models.MenuWindows
 
             Console.Clear();
             Console.SetWindowSize(Game.WINDOWWIDTH, Game.WINDOWHIGHT + 1);
+
+            RequestFromMenu = RequestType.Empty;
         }
         public IList<IMenuItem> MenuItems { get; set; }
+        public RequestType RequestFromMenu { get; set; }
 
         public void Draw()
         {

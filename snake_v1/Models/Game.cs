@@ -22,7 +22,6 @@ namespace snake_v1.Models
 
         private static bool _gameOver=default;
 
-        private static bool _directionChaged = false;
         internal const byte WINDOWWIDTH = 100;
         internal const byte WINDOWHIGHT = 40;
         // TODO как присвоить тип интерфейса ?
@@ -31,6 +30,12 @@ namespace snake_v1.Models
         public static void Stert()
         {
             IMenu menu=new MainMenu();
+
+            if (menu.RequestFromMenu==RequestType.Exit)
+            {
+                Console.Clear();
+                return;
+            }
 
             initGame();
 
@@ -64,11 +69,6 @@ namespace snake_v1.Models
             }
         }
 
-        private static void InitMainMenu()
-        {
-            throw new NotImplementedException();
-        }
-
         private static void TouchCheck()
         {
             
@@ -92,11 +92,7 @@ namespace snake_v1.Models
             currentDirection = Enums.MoveDirection.Right;
             Console.SetWindowSize(WINDOWWIDTH, WINDOWHIGHT+1);
 
-            //_tempMenu = new MenuItem(0, 0, WINDOWWIDTH-1, 4, ConsoleColor.Blue, "Prob prob");
-            //_tempMenu.Draw();
-
-
-            map = MapGenerator.Generate(Enums.MapType.Box, 1, 4, WINDOWWIDTH, WINDOWHIGHT, ConsoleColor.Yellow);
+            map = MapGenerator.Generate(Enums.MapType.Box, 5, 6, WINDOWWIDTH, WINDOWHIGHT, ConsoleColor.Yellow);
             map.Draw();
             map.GenerateNewFruit();
 

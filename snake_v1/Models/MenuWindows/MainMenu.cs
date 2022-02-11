@@ -11,8 +11,11 @@ namespace snake_v1.Models.MenuWindows
     {
         public MainMenu() : base()
         {
+
             Init();
         }
+
+
 
         private string _returnedValue = string.Empty;
 
@@ -40,7 +43,7 @@ namespace snake_v1.Models.MenuWindows
 
                 MenuItems.Add(new MenuItem("Player", 80, TopMargin: 2, MenuItems.Last(), ConsoleColor.Blue, $" Игрок : {Game.Nic}", Align.left));
 
-                MenuItems.Add(new MenuItem("Player", 80, TopMargin: 1, MenuItems.Last(), Console.BackgroundColor, $"", Align.left));
+                MenuItems.Add(new MenuItem("Space", 80, TopMargin: 1, MenuItems.Last(), Console.BackgroundColor, $"", Align.left));
 
                 Draw();
 
@@ -76,6 +79,7 @@ namespace snake_v1.Models.MenuWindows
                         continue;
 
                     case 5:
+                        RequestFromMenu = RequestType.Exit;
                         return;
 
                     default:

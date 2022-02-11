@@ -18,12 +18,12 @@ namespace snake_v1.Models.Map
 
         public static Map Generate(MapType type, int x, int y, int width, int height, ConsoleColor color)
         {
-            Map map = null;
+            Map map = default;
 
             switch (type)
             {
                 case MapType.Box:
-                    map = GenerateBox(x, y, width+1-(x*2), height-(5+x), color);
+                    map = GenerateBox(x, y, width-(x*2)-1, height-(5+x), color);
                     break;
             }
             return map;
