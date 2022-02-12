@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Infrastructure
 {
-    interface IMenu:IDrawble
+    interface IMenu : IDrawble
     {
         IList<IMenuItem> MenuItems { get; set; }
 
         void Init();
-
-        public RequestType RequestFromMenu { get; set; }
     }
 }

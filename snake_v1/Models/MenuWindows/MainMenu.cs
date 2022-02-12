@@ -62,24 +62,25 @@ namespace snake_v1.Models.MenuWindows
 
                 switch (returnedValue)
                 {
-                    case 1:
+                    case (int)MainMenuItems.Play :
                         break;
 
-                    case 2:
+                    case (int)MainMenuItems.NicknameСhange:
                         var menuPlayerChange = new MenuPlayerChange();
                         continue;
 
 
-                    case 3:
+                    case (int)MainMenuItems.SelectMap:
                         MenuSelectMap menuSelectMap = new MenuSelectMap();
                         continue;
 
-                    case 4:
+                    case (int)MainMenuItems.LeaderBoard:
                         MenuReiting menuReiting = new MenuReiting();
                         continue;
 
-                    case 5:
-                        RequestFromMenu = RequestType.Exit;
+                    case (int)MainMenuItems.Exit:
+                        Console.Clear();
+                        Environment.Exit(0);
                         return;
 
                     default:

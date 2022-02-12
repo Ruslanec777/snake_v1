@@ -105,7 +105,7 @@ namespace snake_v1.Models
         public void SnakeAddItem()
         {
             Points.RemoveAt(Points.Count - 1);
-
+            //TODO
             SnakeAddItemBody(Points[Points.Count - 1]);
 
             SnakeAddItemSpace(Points[Points.Count - 1]);
@@ -117,7 +117,7 @@ namespace snake_v1.Models
         /// <param name="point">элемент к которому цепляется новое звено</param>
         private void SnakeAddItemBody(IPoint point)
         {
-            switch (point.LastMove)
+            switch (Direction)
             {
                 case MoveDirection.Up:
                     Points.Add(new Point(Points[Points.Count - 1].X, Points[Points.Count - 1].Y - 1, _tailSymbol));
@@ -138,6 +138,7 @@ namespace snake_v1.Models
 
         private void SnakeAddItemSpace(IPoint point)
         {
+            //TODO LastDirection
             switch (point.LastMove)
             {
                 case MoveDirection.Up:

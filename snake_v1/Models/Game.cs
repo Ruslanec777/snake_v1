@@ -25,6 +25,8 @@ namespace snake_v1.Models
 
         private static List<IMenuItem> _menuItems;
 
+        private static string _fileName="Save.txt";
+
 
 
         private static int _score = 0;
@@ -42,13 +44,13 @@ namespace snake_v1.Models
 
         public static void Stert()
         {
-            IMenu menu = new MainMenu();
 
-            if (menu.RequestFromMenu == RequestType.Exit)
-            {
-                Console.Clear();
-                return;
-            }
+            //TODO убрать
+            //GameHistory gameHistory = new GameHistory(_fileName);
+
+            //return;
+            //
+            IMenu menu = new MainMenu();
 
             initGame();
 

@@ -63,6 +63,6 @@ namespace snake_v1.Infrastructure
             Points.Add(point);
         }
 
-        public abstract void TransformMotionSimulation(MoveDirection direction);
-    }
+        //public abstract void TransformMotionSimulation(MoveDirection direction);
+     }
 }

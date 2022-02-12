@@ -11,7 +11,7 @@ namespace snake_v1.Enums
         Play =1,
         NicknameСhange ,
         SelectMap,
-        RankingЕable,
+        LeaderBoard,
         Exit
 
     }

@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Infrastructure\GeometricInterfaces\IAngle.cs" />
+    <Compile Remove="Infrastructure\GeometricInterfaces\ITransformFigur.cs" />
     <Compile Remove="Infrastructure\IClonable.cs" />
     <Compile Remove="Infrastructure\IPicture.cs" />
     <Compile Remove="Infrastructure\IRigidPoint.cs" />

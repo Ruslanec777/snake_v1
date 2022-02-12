@@ -49,7 +49,7 @@ namespace snake_v1.Models.GeometricPrimitives
 
 
 
-        public override void TransformMotionSimulation(MoveDirection direction)
+        public  void TransformMotionSimulation(MoveDirection direction)
         {
             //TODO раскоментировать, заглушил
             Point pointForNextStep = null;

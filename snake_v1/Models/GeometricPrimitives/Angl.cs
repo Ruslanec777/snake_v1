@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Models.GeometricPrimitives
 {
-    class Angl : GeometricPrimitiv ,IAngle 
+    class Angl : GeometricPrimitiv 
     {
         private readonly char _anglleftUp = (char)9565;
         private readonly char _anglLeftDown = (char)9559;
@@ -54,11 +54,6 @@ namespace snake_v1.Models.GeometricPrimitives
             }
 
             Points.Add(point);
-        }
-
-        public override void TransformMotionSimulation(MoveDirection direction)
-        {
-            throw new NotImplementedException();
         }
     }
 }

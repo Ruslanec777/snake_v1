@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Models.BaseItems
 {
+    /// <summary>
+    /// представляет вектор из начала координат до точки X,Y
+    /// </summary>
     public class Vector2D
     {
         public int X { get; set; }

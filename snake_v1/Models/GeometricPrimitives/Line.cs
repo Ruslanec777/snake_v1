@@ -56,10 +56,5 @@ namespace snake_v1.Models.GeometricPrimitives
                     break;
             }
         }
-
-        public override void TransformMotionSimulation(MoveDirection direction)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

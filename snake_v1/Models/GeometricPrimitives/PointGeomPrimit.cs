@@ -28,10 +28,5 @@ namespace snake_v1.Models.GeometricPrimitives
             Color = color;
             Points.Add(new Point(symbol));
         }
-
-        public override void TransformMotionSimulation(MoveDirection direction)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
