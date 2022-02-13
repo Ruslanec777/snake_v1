@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Models.History
 {
-    public class Player
+    public class Player : IComparable<Player>
     {
         public string Name { get; set; }
         public int HiScoreThisPlayer { get; set; } = default;
@@ -21,6 +21,10 @@ namespace snake_v1.Models.History
             }           
         }
 
+        public int CompareTo(Player player)
+        {
+            return HiScoreThisPlayer.CompareTo(player.HiScoreThisPlayer);
+        }
 
 
     }

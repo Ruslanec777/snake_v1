@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace snake_v1.Models.History
 {
@@ -11,7 +9,16 @@ namespace snake_v1.Models.History
     {
         private string _fileName;
 
-        List<Player> players { get; set; }
+        List<Player> players
+        {
+            get
+            {
+                players.Sort();
+                return players;
+            }
+            set { }
+        }
+
         public GameHistory(string fileName)
         {
             _fileName = AppDomain.CurrentDomain.BaseDirectory.ToString() + fileName;
@@ -24,7 +31,9 @@ namespace snake_v1.Models.History
 
         public void SaveHiScorePlayer(string name, int score)
         {
-            Player player = SearshPlayer(name);
+            var ps = new PlayerSearh (name);
+
+            Player player = players.Find(ps.Compare);
 
             if (player == null)
             {
@@ -34,16 +43,18 @@ namespace snake_v1.Models.History
             }
             else
             {
-                ReSaveHiScore( player, score);
+                ReSaveHiScore(player, score);
             }
 
         }
 
         private void ReSaveHiScore(Player player, int score)
         {
-            if (player.HiScoreThisPlayer<score)
+            if (player.HiScoreThisPlayer < score)
             {
-                player.HiScoreThisPlayer = score;
+                PlayerSearh ps = new(player);
+
+                players.Find(ps.Compare).HiScoreThisPlayer = score;
 
             }
             else
@@ -52,38 +63,38 @@ namespace snake_v1.Models.History
             }
         }
 
-        public void SaveHiScorePlayer(Player player)
-        {
-
-            CreatePlaerRec(player);
-        }
-
         private void CreatePlaerRec(Player player)
         {
-            throw new NotImplementedException();
+           players.Add(player);
         }
 
-        private Player SearshPlayer(string name)
-        {
-            //Player tempPlayer=
-            return players.Where(x => x.Name == name).FirstOrDefault();
-        }
-
-        //private string[] SearchFileToSave(string fileName)
+        //private Player SearshPlayer(string name)
         //{
-        //    string currentPath = AppDomain.CurrentDomain.BaseDirectory.ToString();
-
-        //    string[] files = Directory.GetFiles(currentPath);
-
-        //    //foreach (var file in files)
-        //    //{
-        //    //    if (File.GetAttributes().ToString == fileName)
-        //    //    {
-        //    //        _currentFile = file;
-        //    //    }
-        //    //}
-
-        //    return files;
+        //    //Player tempPlayer=
+        //    return players.Where(x => x.Name == name).FirstOrDefault();
         //}
+
+        /// <summary>
+        /// класс для создания предиката
+        /// </summary>
+        private class PlayerSearh
+        {
+            public string Name { get; set; }
+
+            public PlayerSearh(Player player)
+            {
+                Name = player.Name;
+            }
+
+            public PlayerSearh(String name)
+            {
+                Name =name;
+            }
+
+            public bool Compare(Player player)
+            {
+                return Name == (player.Name);
+            }
+        }
     }
 }
