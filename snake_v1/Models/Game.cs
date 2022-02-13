@@ -1,6 +1,7 @@
 ﻿using snake_v1.Enums;
 using snake_v1.Infrastructure;
 using snake_v1.Models.BaseItems;
+using snake_v1.Models.History;
 using snake_v1.Models.Map;
 using snake_v1.Models.MenuWindows;
 using System;
@@ -46,10 +47,10 @@ namespace snake_v1.Models
         {
 
             //TODO убрать
-            //GameHistory gameHistory = new GameHistory(_fileName);
+            GameHistory gameHistory = new GameHistory(_fileName);
 
-            //return;
-            //
+            return;
+
             IMenu menu = new MainMenu();
 
             initGame();
