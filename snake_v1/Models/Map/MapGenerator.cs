@@ -3,10 +3,6 @@ using snake_v1.Infrastructure;
 using snake_v1.Models.BaseItems;
 using snake_v1.Models.GeometricPrimitives;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace snake_v1.Models.Map
 {
@@ -18,14 +14,16 @@ namespace snake_v1.Models.Map
 
         public static Map Generate(MapType type, int x, int y, int width, int height, ConsoleColor color)
         {
+            Console.Clear();
             Map map = default;
 
             switch (type)
             {
                 case MapType.Box:
-                    map = GenerateBox(x, y, width-(x*2)-1, height-(5+x), color);
+                    map = GenerateBox(x, y, width - (x * 2) - 1, height - (5 + x), color);
                     break;
             }
+
             return map;
         }
 
@@ -33,11 +31,11 @@ namespace snake_v1.Models.Map
         {
             IRectangle borders = new Rectangle(width, height, color);
 
-            var map= new Map(x, y, "Box", borders);
+            var map = new Map(x, y, "Box", borders);
 
             map.BottomLeftEdge = new Vector2D(x, y + height);
 
-            map.BottomRightEdge = new Vector2D(x+width, y + height);
+            map.BottomRightEdge = new Vector2D(x + width, y + height);
 
             return map;
         }

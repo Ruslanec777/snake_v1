@@ -14,11 +14,14 @@ using static snake_v1.Models.GameSpeedController;
 
 namespace snake_v1.Models
 {
-    static class Game
+    public class Game
     {
         public static Snake snake;
 
         public static IMap map;
+
+        public Menu MainMenu { get; set; }
+        public MenuLeaderBoard MenuLeaderBoard { get; set; }
 
         public static string Nic = "Player";
 
@@ -34,7 +37,10 @@ namespace snake_v1.Models
         private static IMenuItem _scoreMenuItem;
         private static IMenuItem _mapMeuItem;
 
-        private static GameHistory _history;
+
+        public static DataStorage DataStorage { get; private set; }
+
+        public Player CurrentPlayer { get; set; } 
 
 
         internal const byte WINDOWWIDTH = 100;
@@ -43,11 +49,16 @@ namespace snake_v1.Models
         internal static readonly byte _menuItemHight = 5;
         internal static readonly byte _menuItemWidth = 20;
 
-        public static void Stert()
+        public Game()
         {
-            _history ??= new GameHistory(_fileName);
+            MenuLeaderBoard = new MenuLeaderBoard(this);
+            MainMenu = new MainMenu(this);
+            map = MapGenerator.Generate(Enums.MapType.Box, 16, 10, WINDOWWIDTH, WINDOWHIGHT, ConsoleColor.Yellow);
+            CurrentPlayer=new Player(Nic,0);
+        }
 
-            IMenu menu = new MainMenu();
+        public void Stert()
+        {
 
             initGame();
 
@@ -66,7 +77,7 @@ namespace snake_v1.Models
 
                 if (_gameOver)
                 {
-                    _history.SaveHiScorePlayer(Nic, _score);
+                    MenuLeaderBoard.SaveHiScorePlayer();
 
                     MenuItemLabel menuItemLabel = new MenuItemLabel("GameOver", new Vector2D(WINDOWWIDTH / 2 - _menuItemWidth / 2, 0), new Vector2D(_menuItemWidth, _menuItemHight), ConsoleColor.Red, "Игра окончена");
 
@@ -87,7 +98,7 @@ namespace snake_v1.Models
 
                     _score = 0;
 
-                    menu.Init();
+                    MainMenu.Init();
 
                     _gameOver = false;
 
@@ -104,7 +115,7 @@ namespace snake_v1.Models
             }
         }
 
-        private static void TouchCheck()
+        private  void TouchCheck()
         {
 
             if (map.IsHit(snake.Head) || snake.IsHitTail())
@@ -117,41 +128,47 @@ namespace snake_v1.Models
                 snake.SnakeAddItem();
                 map.Frut.Delete();
                 map.GenerateNewFruit();
-                _score += 1;
-                _scoreMenuItem.Text = "Очки: " + _score.ToString();
+                 CurrentPlayer.HiScoreThisPlayer += 1;
+                _scoreMenuItem.Text = "Очки: " + CurrentPlayer.HiScoreThisPlayer.ToString();
             }
         }
 
-        private static void initGame()
+        private void initGame()
         {
+            CurrentPlayer = new Player(Nic, 0);
+
             Console.Clear();
             Console.CursorVisible = false;
             currentDirection = Enums.MoveDirection.Right;
             Console.SetWindowSize(WINDOWWIDTH, WINDOWHIGHT + 1);
 
-            map = MapGenerator.Generate(Enums.MapType.Box, 16, 10, WINDOWWIDTH, WINDOWHIGHT, ConsoleColor.Yellow);
+            InitMap();
+            initSnake();
+        }
+
+        private static void InitMap()
+        {
             map.Draw();
             map.GenerateNewFruit();
+            InitHood();
+        }
 
+        private static void InitHood()
+        {
             _menuItems = new();
 
             _nicMenuItem = new MenuItemLabel("Name", new Vector2D(1, 0), new Vector2D(_menuItemWidth, _menuItemHight), ConsoleColor.Red, "Игрок:" + Nic);
-
             _scoreMenuItem = new MenuItemLabel("Score", new Vector2D(1, WINDOWHIGHT - _menuItemHight), new Vector2D(20, 5), ConsoleColor.Red, "Очки:" + _score.ToString());
-
             _mapMeuItem = new MenuItemLabel("Map", new Vector2D(WINDOWWIDTH - _menuItemWidth, 0), new Vector2D(_menuItemWidth, _menuItemHight), ConsoleColor.Red, "Карта :" + map.Name);
 
             _menuItems.Add(_nicMenuItem);
             _menuItems.Add(_scoreMenuItem);
             _menuItems.Add(_mapMeuItem);
 
-
             foreach (var item in _menuItems)
             {
                 item.Draw();
             }
-
-            initSnake();
         }
 
         private static void initSnake()

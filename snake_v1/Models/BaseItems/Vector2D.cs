@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace snake_v1.Models.BaseItems
 {
@@ -32,7 +28,7 @@ namespace snake_v1.Models.BaseItems
 
         public Vector2D Abs()
         {
-            return new Vector2D(Math.Abs( X), Math.Abs(Y));
+            return new Vector2D(Math.Abs(X), Math.Abs(Y));
         }
     }
 }

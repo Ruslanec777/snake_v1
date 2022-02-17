@@ -1,26 +1,25 @@
 ﻿using snake_v1.Enums;
 using snake_v1.Infrastructure;
-using snake_v1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace snake_v1.Models.MenuWindows
 {
     public abstract class Menu : IMenu
     {
-        public Menu()
+        public Menu(Game game)
         {
-            MenuItems = new List<IMenuItem >();
+            MenuItems = new List<IMenuItem>();
 
             Console.Clear();
             Console.SetWindowSize(Game.WINDOWWIDTH, Game.WINDOWHIGHT + 1);
+            Game = game;
 
         }
         public virtual IList<IMenuItem> MenuItems { get; set; }
+        public Game Game { get; set; }
 
         public void Draw()
         {

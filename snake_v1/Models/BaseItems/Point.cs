@@ -1,20 +1,16 @@
 ﻿using snake_v1.Enums;
 using snake_v1.Infrastructure;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace snake_v1.Models.BaseItems
 {
     public class Point : IPoint, ICloneable
     {
-        public int X { get; set; } 
-        public int Y { get; set; } 
-        public char Symbol { get; set; } 
-        public ConsoleColor Color { get; set; } 
-        public MoveDirection LastMove { get ; set ; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public char Symbol { get; set; }
+        public ConsoleColor Color { get; set; }
+        public MoveDirection LastMove { get; set; }
 
         public Point()
         {
@@ -26,7 +22,7 @@ namespace snake_v1.Models.BaseItems
             Y = y;
         }
 
-        public Point(int x, int y, char symbol) 
+        public Point(int x, int y, char symbol)
               : this(x, y)
         {
             Symbol = symbol;
@@ -38,7 +34,7 @@ namespace snake_v1.Models.BaseItems
             Color = color;
         }
 
-        public Point(int x, int y, ConsoleColor color) 
+        public Point(int x, int y, ConsoleColor color)
               : this(x, y)
         {
             Color = color;
@@ -126,9 +122,9 @@ namespace snake_v1.Models.BaseItems
             Console.ResetColor();
         }
 
-        public bool IsHit(IPoint point )
+        public bool IsHit(IPoint point)
         {
-           return X == point.X && Y == point.Y;
+            return X == point.X && Y == point.Y;
         }
     }
 }

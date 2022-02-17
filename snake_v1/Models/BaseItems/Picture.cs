@@ -1,18 +1,11 @@
-﻿using snake_v1.Enums;
-using snake_v1.Infrastructure;
-using snake_v1.Models.GeometricPrimitives;
+﻿using snake_v1.Infrastructure;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Rectangle = snake_v1.Models.GeometricPrimitives.Rectangle;
 
 namespace snake_v1.Models.BaseItems
 {
     ////TODO уточнить правильность заполнения IClonable<Picture>
-    public class Picture : GameObject ,ICloneable
+    public class Picture : GameObject, ICloneable
     {
         public Picture()
         {
@@ -30,7 +23,7 @@ namespace snake_v1.Models.BaseItems
         {
         }
 
-        public Picture(int x, int y, IGeometricPrimitive figur ,ConsoleColor color) : base(x, y, figur)
+        public Picture(int x, int y, IGeometricPrimitive figur, ConsoleColor color) : base(x, y, figur)
         {
             Figur.Color = color;
             Color = color;
@@ -40,7 +33,7 @@ namespace snake_v1.Models.BaseItems
         {
         }
 
-        public Picture(Vector2D startPoint, Vector2D widthHeight, ConsoleColor color) : base(startPoint.X, startPoint.Y, new Rectangle(widthHeight ,color))
+        public Picture(Vector2D startPoint, Vector2D widthHeight, ConsoleColor color) : base(startPoint.X, startPoint.Y, new Rectangle(widthHeight, color))
         {
             Figur.Color = color;
             Color = color;

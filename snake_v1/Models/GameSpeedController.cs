@@ -1,15 +1,10 @@
 ﻿using snake_v1.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using static snake_v1.Models.Direction;
 
 namespace snake_v1.Models
 {
-    static class  GameSpeedController
+    static class GameSpeedController
     {
         /// <summary>
         /// коэфициент замедления при вертикальном движении , задается подбором
@@ -21,7 +16,7 @@ namespace snake_v1.Models
         /// </summary>
         /// <param name="pause"></param>
         /// <returns></returns>
-        public static int ControlledPause(int pause=150)
+        public static int ControlledPause(int pause = 150)
         {
             switch (currentDirection)
             {

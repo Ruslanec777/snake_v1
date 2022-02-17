@@ -10,7 +10,7 @@ namespace snake_v1.Models.MenuWindows
     {
         private string _returnedValue;
 
-        public MenuPlayerChange()
+        public MenuPlayerChange(Game game) : base(game)
         {
             Init();
         }

@@ -7,7 +7,7 @@ using System;
 namespace snake_v1.Models.MenuWindows
 {
     //TODO как организовать наследование что бы создавать переменную типа интерфейса ?
-    class MenuItemLabel : Picture, IMenuItem 
+    class MenuItemLabel : Picture, IMenuItem
     {
         private string _text;
         public string Text
@@ -103,7 +103,7 @@ namespace snake_v1.Models.MenuWindows
 
         protected void ClearText()
         {
-            if (Text != null && OffsetText!=null)
+            if (Text != null && OffsetText != null)
             {
                 Console.SetCursorPosition(OffsetText.X, OffsetText.Y);
                 for (int i = 0; i < Text.Length; i++)

@@ -3,15 +3,15 @@ using snake_v1.Models.BaseItems;
 using System;
 using System.Linq;
 using System.Threading;
-using snake_v1.Infrastructure.GeometricInterfaces;
 
 namespace snake_v1.Models.MenuWindows
 {
     public class MainMenu : Menu
     {
-        public MainMenu() : base()
+        public MainMenu(Game game) : base(game)
         {
             Init();
+
         }
 
         private string _returnedValue = string.Empty;
@@ -59,20 +59,20 @@ namespace snake_v1.Models.MenuWindows
 
                 switch (returnedValue)
                 {
-                    case (int)MainMenuItems.Play :
+                    case (int)MainMenuItems.Play:
                         break;
 
                     case (int)MainMenuItems.NicknameСhange:
-                        var menuPlayerChange = new MenuPlayerChange();
+                        var menuPlayerChange = new MenuPlayerChange(Game);
                         continue;
 
 
                     case (int)MainMenuItems.SelectMap:
-                        MenuSelectMap menuSelectMap = new MenuSelectMap();
+                        MenuSelectMap menuSelectMap = new MenuSelectMap(Game);
                         continue;
 
                     case (int)MainMenuItems.LeaderBoard:
-                        MenuLeaderBoard menuReiting = new MenuLeaderBoard();
+                        Game.MenuLeaderBoard.Init();
                         continue;
 
                     case (int)MainMenuItems.Exit:
@@ -86,8 +86,6 @@ namespace snake_v1.Models.MenuWindows
                 }
                 return;
             }
-
-
             //Console.ReadKey();
         }
     }

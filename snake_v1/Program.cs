@@ -1,8 +1,4 @@
-﻿using snake_v1.Enums;
-using snake_v1.Models;
-using System;
-using System.Collections.Generic;
-using System.Threading;
+﻿using snake_v1.Models;
 
 namespace snake_v1
 {
@@ -10,7 +6,8 @@ namespace snake_v1
     {
         static void Main(string[] args)
         {
-            Game.Stert();
+            Game game = new Game();
+            game.Stert();
         }
 
     }

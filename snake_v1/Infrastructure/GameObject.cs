@@ -10,7 +10,7 @@ namespace snake_v1.Infrastructure
     /// <summary>
     /// Умеет рисовать объект и удалять ,принимает цвет
     /// </summary>
-    public abstract class GameObject :  IGameObject
+    public abstract class GameObject : IGameObject
     {
         private List<IPoint> tempPoints;
 
@@ -25,15 +25,15 @@ namespace snake_v1.Infrastructure
                 {
                     IPoint point = (IPoint)pointTemp.Clone();
 
-                    point.X = point.X+ Figur.OffSet.X + StartPoint.X;
-                    point.Y = point.Y+ Figur.OffSet.Y + StartPoint.Y;
+                    point.X = point.X + Figur.OffSet.X + StartPoint.X;
+                    point.Y = point.Y + Figur.OffSet.Y + StartPoint.Y;
                     point.Color = Figur.Color;
 
                     tempPoints.Add(point);
                 }
                 return tempPoints;
             }
-        set { }
+            set { }
         }
 
         public IGeometricPrimitive Figur { get; set; } //= new Line(23, LineType.Horizontal);
@@ -45,7 +45,7 @@ namespace snake_v1.Infrastructure
         {
             //TODO не понятное исключение
             Points = new List<IPoint>();
-            Figur = new PointGeomPrimit(ConsoleColor.Black ,' ');
+            Figur = new PointGeomPrimit(ConsoleColor.Black, ' ');
         }
         //TODO GameObject имеет 2 StartPoint !!! snake_v1.Infrastructure.IPoint -		StartPoint (snake_v1.Infrastructure.GameObject)	{snake_v1.Models.BaseItems.Point}	snake_v1.Infrastructure.IPoint {snake_v1.Models.BaseItems.Point}
 
@@ -62,7 +62,7 @@ namespace snake_v1.Infrastructure
         {
             Figur = figur;
 
-          //  InicialPoints(Figur.Points);
+            //  InicialPoints(Figur.Points);
         }
 
 

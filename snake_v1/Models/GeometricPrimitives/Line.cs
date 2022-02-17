@@ -2,15 +2,11 @@
 using snake_v1.Infrastructure;
 using snake_v1.Models.BaseItems;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace snake_v1.Models.GeometricPrimitives
 {
     //TODO решить как передавать примитив или преобразовать примитив в картинку
-    public class Line : GeometricPrimitiv ,ILine
+    public class Line : GeometricPrimitiv, ILine
     {
         private readonly char _verticalChar = (char)9553;
         private readonly char _horizontalChar = (char)9552;
@@ -20,7 +16,7 @@ namespace snake_v1.Models.GeometricPrimitives
         //TODO как унаследовать присвоение new() ?
         //public ConsoleColor Color { get ; set ; }
 
-        public Line( int length, LineType lineType)          
+        public Line(int length, LineType lineType)
         {
             Length = length;
             TypeLine = lineType;
@@ -28,16 +24,16 @@ namespace snake_v1.Models.GeometricPrimitives
             InitPoints(length, lineType);
         }
 
-        public Line(int length, LineType lineType, ConsoleColor color)            
+        public Line(int length, LineType lineType, ConsoleColor color)
         {
             Color = color;
-            InitPoints( length, lineType);
+            InitPoints(length, lineType);
         }
 
         private void InitPoints(int length, LineType lineType)
         {
-            int x=0;
-            int y=0;
+            int x = 0;
+            int y = 0;
 
             switch (lineType)
             {

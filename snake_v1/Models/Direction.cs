@@ -5,7 +5,7 @@ namespace snake_v1.Models
 {
     class Direction
     {
-        public static MoveDirection currentDirection ;
+        public static MoveDirection currentDirection;
 
         public static void ChangeDirection(ConsoleKey key)
         {
@@ -38,9 +38,9 @@ namespace snake_v1.Models
                 default:
                     break;
             }
-            
+
         }
-        
+
 
     }
 }

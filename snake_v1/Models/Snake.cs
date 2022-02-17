@@ -1,14 +1,10 @@
 ﻿using snake_v1.Enums;
 using snake_v1.Infrastructure;
-using snake_v1.Infrastructure.GeometricInterfaces;
 using snake_v1.Models.BaseItems;
 using snake_v1.Models.GeometricPrimitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static snake_v1.Models.Direction;
 
 namespace snake_v1.Models
 {
@@ -30,8 +26,8 @@ namespace snake_v1.Models
                 IPoint[] points = new IPoint[Points.Count - 2];
 
                 Points.RemoveAt(0);
-                Points.RemoveRange( Points.Count - 1 ,1);
-                Points.CopyTo(0, points, 0, Points.Count );
+                Points.RemoveRange(Points.Count - 1, 1);
+                Points.CopyTo(0, points, 0, Points.Count);
 
                 TailRigidBody.Figur.Points.Clear();
                 TailRigidBody.Figur.Points.AddRange(points);
@@ -43,7 +39,7 @@ namespace snake_v1.Models
         public bool IsHitTail()
         {
 
-            foreach (var item in Points.Where(x=>x!=Head && x!=Points.Last()))
+            foreach (var item in Points.Where(x => x != Head && x != Points.Last()))
             {
                 if (item.IsHit(Head))
                 {
@@ -275,7 +271,6 @@ namespace snake_v1.Models
             //ReplacingOldHeadSymbol();
             //_head.Move(Direction, 1);
             //_points.Add(_head);
-
         }
 
         private void ReplacingOldHeadSymbol()
@@ -300,7 +295,6 @@ namespace snake_v1.Models
                     break;
             }
         }
-
         public void ChangeDirection(ConsoleKey key)
         {
             switch (key)
