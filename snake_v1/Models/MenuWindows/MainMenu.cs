@@ -11,11 +11,8 @@ namespace snake_v1.Models.MenuWindows
     {
         public MainMenu() : base()
         {
-
             Init();
         }
-
-
 
         private string _returnedValue = string.Empty;
 
@@ -75,7 +72,7 @@ namespace snake_v1.Models.MenuWindows
                         continue;
 
                     case (int)MainMenuItems.LeaderBoard:
-                        MenuReiting menuReiting = new MenuReiting();
+                        MenuLeaderBoard menuReiting = new MenuLeaderBoard();
                         continue;
 
                     case (int)MainMenuItems.Exit:

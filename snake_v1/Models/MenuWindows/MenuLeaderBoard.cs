@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace snake_v1.Models.MenuWindows
 {
-    internal class MenuReiting : Menu
+    internal class MenuLeaderBoard : Menu
     {
         public override void Init()
         {

@@ -1,22 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace snake_v1.Models.History
 {
     public class GameHistory
     {
-        private string _fileName;
+        private readonly string _fileName;
 
-        List<Player> players
+        private List<Player> _players;
+        List<Player> Players
         {
             get
             {
-                players.Sort();
-                return players;
+                //_players.Sort();
+               // _players.
+
+                return _players;
             }
-            set { }
+            set => _players = value;
         }
 
         public GameHistory(string fileName)
@@ -27,13 +29,15 @@ namespace snake_v1.Models.History
             {
                 File.Create(_fileName);
             }
+
+            Players = new();
         }
 
         public void SaveHiScorePlayer(string name, int score)
         {
-            var ps = new PlayerSearh (name);
+            var ps = new PlayerSearh(name);
 
-            Player player = players.Find(ps.Compare);
+            Player player = Players.Find(ps.Compare);
 
             if (player == null)
             {
@@ -45,7 +49,6 @@ namespace snake_v1.Models.History
             {
                 ReSaveHiScore(player, score);
             }
-
         }
 
         private void ReSaveHiScore(Player player, int score)
@@ -54,7 +57,7 @@ namespace snake_v1.Models.History
             {
                 PlayerSearh ps = new(player);
 
-                players.Find(ps.Compare).HiScoreThisPlayer = score;
+                Players.Find(ps.Compare).HiScoreThisPlayer = score;
 
             }
             else
@@ -65,7 +68,18 @@ namespace snake_v1.Models.History
 
         private void CreatePlaerRec(Player player)
         {
-           players.Add(player);
+            Players.Add(player);
+        }
+
+        private void WriteToFile(String path, List<Player> players)
+        {
+            using ( StreamWriter streamWriter=new StreamWriter(path, false))
+            {
+                streamWriter.WriteLine(players);
+            }
+
+
+
         }
 
         //private Player SearshPlayer(string name)
@@ -88,7 +102,7 @@ namespace snake_v1.Models.History
 
             public PlayerSearh(String name)
             {
-                Name =name;
+                Name = name;
             }
 
             public bool Compare(Player player)

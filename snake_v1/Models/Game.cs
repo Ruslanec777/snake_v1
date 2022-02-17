@@ -26,7 +26,7 @@ namespace snake_v1.Models
 
         private static List<IMenuItem> _menuItems;
 
-        private static string _fileName="Save.txt";
+        private static string _fileName = "Save.txt";
 
         private static int _score = 0;
 
@@ -45,7 +45,7 @@ namespace snake_v1.Models
 
         public static void Stert()
         {
-            _history = new GameHistory(_fileName);
+            _history ??= new GameHistory(_fileName);
 
             IMenu menu = new MainMenu();
 
@@ -66,11 +66,11 @@ namespace snake_v1.Models
 
                 if (_gameOver)
                 {
-                    _history.SaveHiScorePlayer(Nic,_score);
+                    _history.SaveHiScorePlayer(Nic, _score);
 
                     MenuItemLabel menuItemLabel = new MenuItemLabel("GameOver", new Vector2D(WINDOWWIDTH / 2 - _menuItemWidth / 2, 0), new Vector2D(_menuItemWidth, _menuItemHight), ConsoleColor.Red, "Игра окончена");
 
-                    for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 2; i++)
                     {
                         menuItemLabel.Color = ConsoleColor.Blue;
                         menuItemLabel.Draw();
@@ -83,12 +83,17 @@ namespace snake_v1.Models
                         Thread.Sleep(500);
                     }
 
-                    Console.Clear();  
-                    
+                    Console.Clear();
+
+                    _score = 0;
+
                     menu.Init();
 
+                    _gameOver = false;
 
-                    break;
+                    initGame();
+
+                    continue;
                 }
 
                 snake.Draw();
