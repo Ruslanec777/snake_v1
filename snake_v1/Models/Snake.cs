@@ -67,42 +67,11 @@ namespace snake_v1.Models
             //Init(length);
         }
 
-
-        //public void Init(int length)
-        //{
-        //    Points.Add(new Point(0, 0, _headSymol, Color));
-
-        //    for (int i = 0; i < length; i++)
-        //    {
-        //        IPoint point = (IPoint)Points.Last().Clone();
-        //        point.Symbol = _tailSymbol;
-        //        point.MoveBack(Direction, 1);
-
-        //        Points.Add(point);
-        //    }
-
-        //    /*  Snake.Add(new Point(30, 30, '0'));
-        //      Snake[0].CurrentDirectionPoint = currentDirection;
-
-
-        //      for (int i = 1; i < 6; i++)
-        //      {
-        //          if (i==5)
-        //          {
-        //              SnakeAddItemSpace(Snake[Snake.Count - 1]);
-        //              Snake[i].CurrentDirectionPoint = currentDirection;
-        //              break;
-        //          }
-        //          SnakeAddItemBody(Snake[Snake.Count - 1]);
-        //          Snake[i].CurrentDirectionPoint = currentDirection;
-        //      }*/
-        //}
-
         public void SnakeAddItem()
         {
             Points.RemoveAt(Points.Count - 1);
-            //TODO
-            SnakeAddItemBody(Points[Points.Count - 1]);
+
+            SnakeAddItemBody(Points.Last());
 
             SnakeAddItemSpace(Points[Points.Count - 1]);
 
@@ -113,19 +82,19 @@ namespace snake_v1.Models
         /// <param name="point">элемент к которому цепляется новое звено</param>
         private void SnakeAddItemBody(IPoint point)
         {
-            switch (Direction)
+            switch (point.LastMove)
             {
                 case MoveDirection.Up:
-                    Points.Add(new Point(Points[Points.Count - 1].X, Points[Points.Count - 1].Y - 1, _tailSymbol));
+                    Points.Add(new Point(Points.Last().X, Points.Last().Y - 1, _tailSymbol));
                     break;
                 case MoveDirection.Right:
-                    Points.Add(new Point(Points[Points.Count - 1].X - 1, Points[Points.Count - 1].Y, _tailSymbol));
+                    Points.Add(new Point(Points.Last().X - 1, Points.Last().Y, _tailSymbol));
                     break;
                 case MoveDirection.Down:
-                    Points.Add(new Point(Points[Points.Count - 1].X, Points[Points.Count - 1].Y + 1, _tailSymbol));
+                    Points.Add(new Point(Points.Last().X, Points.Last().Y + 1, _tailSymbol));
                     break;
                 case MoveDirection.Left:
-                    Points.Add(new Point(Points[Points.Count - 1].X + 1, Points[Points.Count - 1].Y, _tailSymbol));
+                    Points.Add(new Point(Points.Last().X + 1, Points.Last().Y, _tailSymbol));
                     break;
                 default:
                     break;
@@ -138,16 +107,16 @@ namespace snake_v1.Models
             switch (point.LastMove)
             {
                 case MoveDirection.Up:
-                    Points.Add(new Point(Points[Points.Count - 1].X, Points[Points.Count - 1].Y - 1, ' '));
+                    Points.Add(new Point(Points.Last().X, Points.Last().Y - 1, ' '));
                     break;
                 case MoveDirection.Right:
-                    Points.Add(new Point(Points[Points.Count - 1].X - 1, Points[Points.Count - 1].Y, ' '));
+                    Points.Add(new Point(Points.Last().X - 1, Points.Last().Y, ' '));
                     break;
                 case MoveDirection.Down:
-                    Points.Add(new Point(Points[Points.Count - 1].X, Points[Points.Count - 1].Y + 1, ' '));
+                    Points.Add(new Point(Points.Last().X, Points.Last().Y + 1, ' '));
                     break;
                 case MoveDirection.Left:
-                    Points.Add(new Point(Points[Points.Count - 1].X + 1, Points[Points.Count - 1].Y, ' '));
+                    Points.Add(new Point(Points.Last().X + 1, Points.Last().Y, ' '));
                     break;
                 default:
                     break;
@@ -249,33 +218,7 @@ namespace snake_v1.Models
                     break;
             }
 
-            //Figur.TransformMotionSimulation(Direction);
 
-            //DeleteTail();
-            //AddHead();
-            ////_head.Draw();
-            // this.Draw();
-        }
-
-        private void DeleteTail()
-        {
-            //_points.Remove(_tail);
-            //_tail.Delete();
-            //_tail = _points[0];
-        }
-
-        private void AddHead()
-        {
-
-            //_head = (IPoint)_points.Last().Clone();
-            //ReplacingOldHeadSymbol();
-            //_head.Move(Direction, 1);
-            //_points.Add(_head);
-        }
-
-        private void ReplacingOldHeadSymbol()
-        {
-            //_points.Last().Symbol = _tail.Symbol;
         }
 
         private void TouchControl(Point point, MoveDirection direction)

@@ -122,13 +122,6 @@ namespace snake_v1.Models.MenuWindows
             ConsoleColor tempConsoleColor = Console.ForegroundColor;
 
             Console.ForegroundColor = Color;
-            // TODO меняется ли сам Figur?
-            //foreach (var point in Points)
-            //{
-            //    point.X += StartPoint.X;
-            //    point.Y += StartPoint.Y;
-            //    point.Draw();
-            //}
 
             foreach (var point in Points)
             {

@@ -38,7 +38,7 @@ namespace snake_v1.Models.MenuWindows
 
                 MenuItems.Add(new MenuItemLabel("Exit", 80, TopMargin: 0, MenuItems.Last(), ConsoleColor.Green, "5 .Выход", Align.left));
 
-                MenuItems.Add(new MenuItemLabel("Player", 80, TopMargin: 2, MenuItems.Last(), ConsoleColor.Blue, $" Игрок : {Game.Nic}", Align.left));
+                MenuItems.Add(new MenuItemLabel("Player", 80, TopMargin: 2, MenuItems.Last(), ConsoleColor.Blue, $" Игрок : {Game.CurrentPlayer.Name}", Align.left));
 
                 MenuItems.Add(new MenuItemLabel("Space", 80, TopMargin: 1, MenuItems.Last(), Console.BackgroundColor, $"", Align.left));
 

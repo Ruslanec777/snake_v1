@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 
 namespace snake_v1.Models.History
 {
@@ -8,58 +10,54 @@ namespace snake_v1.Models.History
     public class DataStorage
     {
         private string _pathToStorage;
-        private const string _fileName = "save.txt";
+        private string _fileName;
 
-        public DataStorage(string pathToStorage)
+        private Game _game;
+
+        public DataStorage(Game game)
         {
-            _pathToStorage = pathToStorage;
+            _game = game;
+
+            _pathToStorage = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), _game.dirToStorage);
+            _fileName = Path.Combine(_pathToStorage, _game.fileName) ;
+
             if (!Directory.Exists(_pathToStorage))
             {
                 Directory.CreateDirectory(_pathToStorage);
             }
-        }
+            //_fileName = AppDomain.CurrentDomain.BaseDirectory.ToString() + _fileName;
 
-        public void Save(List<Player> players)
-        {
-            using (StreamWriter sw = new StreamWriter(Path.Combine(_pathToStorage, _fileName), false))
+            if (!File.Exists(_fileName))
             {
-                sw.WriteLine(JsonConvert.SerializeObject(players));
+                File.Create(_fileName).Dispose();
             }
         }
 
-
-        private void Load(out List<Player> players)
+        public void Save()
         {
-            string st = Path.Combine(_pathToStorage, _fileName);
-
-            if (File.Exists(st))
+            using (StreamWriter sw = new StreamWriter(Path.Combine(_pathToStorage, _fileName), false))
             {
-                using (StreamReader sr = new StreamReader(Path.Combine(_pathToStorage, _fileName)))
+                sw.WriteLine(JsonConvert.SerializeObject(_game.MenuLeaderBoard.Players));
+            }
+        }
+
+        public void Load()
+        {
+            if (File.Exists(_fileName))
+            {
+                using (StreamReader sr = new StreamReader(_fileName))
                 {
-                    players = JsonConvert.DeserializeObject<List<Player>>(sr.ReadToEnd());
-                    if (players == null)
+                    _game.MenuLeaderBoard.Players = JsonConvert.DeserializeObject<List<Player>>(sr.ReadToEnd());
+                    if (_game.MenuLeaderBoard.Players == null)
                     {
-                        players = new List<Player>();
+                        _game.MenuLeaderBoard.Players = new List<Player>();
                     }
                 }
             }
             else
             {
-                players = new List<Player>();
+                _game.MenuLeaderBoard.Players = new List<Player>();
             }
         }
-
-
     }
-    // class DataStorage
-    //{
-    //    private string _directoryName;
-    //    private const string _fileName ="save.txt";
-
-    //    public DataStorage()
-    //    {
-    //        _directoryName=Path.GetDirectoryName( )
-    //    }
-
-    //}
 }

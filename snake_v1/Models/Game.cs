@@ -23,13 +23,15 @@ namespace snake_v1.Models
         public Menu MainMenu { get; set; }
         public MenuLeaderBoard MenuLeaderBoard { get; set; }
 
-        public static string Nic = "Player";
+        //public static string Nic = "Player";
+
+        public readonly string dirToStorage = "saveDirectory";
+
+        public readonly string fileName = "Save.txt";
 
         private static bool _gameOver = default;
 
         private static List<IMenuItem> _menuItems;
-
-        private static string _fileName = "Save.txt";
 
         private static int _score = 0;
 
@@ -40,7 +42,7 @@ namespace snake_v1.Models
 
         public static DataStorage DataStorage { get; private set; }
 
-        public Player CurrentPlayer { get; set; } 
+        public Player CurrentPlayer { get; set; }
 
 
         internal const byte WINDOWWIDTH = 100;
@@ -52,9 +54,11 @@ namespace snake_v1.Models
         public Game()
         {
             MenuLeaderBoard = new MenuLeaderBoard(this);
+            DataStorage = new DataStorage(this);
+            DataStorage.Load();
+            CurrentPlayer = new Player("Player", 0);
             MainMenu = new MainMenu(this);
             map = MapGenerator.Generate(Enums.MapType.Box, 16, 10, WINDOWWIDTH, WINDOWHIGHT, ConsoleColor.Yellow);
-            CurrentPlayer=new Player(Nic,0);
         }
 
         public void Stert()
@@ -96,9 +100,11 @@ namespace snake_v1.Models
 
                     Console.Clear();
 
-                    _score = 0;
+                    //_score = 0;
 
                     MainMenu.Init();
+
+                    CurrentPlayer.HiScoreThisPlayer = 0;
 
                     _gameOver = false;
 
@@ -115,7 +121,7 @@ namespace snake_v1.Models
             }
         }
 
-        private  void TouchCheck()
+        private void TouchCheck()
         {
 
             if (map.IsHit(snake.Head) || snake.IsHitTail())
@@ -128,14 +134,14 @@ namespace snake_v1.Models
                 snake.SnakeAddItem();
                 map.Frut.Delete();
                 map.GenerateNewFruit();
-                 CurrentPlayer.HiScoreThisPlayer += 1;
+                CurrentPlayer.HiScoreThisPlayer += 1;
                 _scoreMenuItem.Text = "Очки: " + CurrentPlayer.HiScoreThisPlayer.ToString();
             }
         }
 
         private void initGame()
         {
-            CurrentPlayer = new Player(Nic, 0);
+            //CurrentPlayer = new Player(Nic, 0);
 
             Console.Clear();
             Console.CursorVisible = false;
@@ -146,18 +152,18 @@ namespace snake_v1.Models
             initSnake();
         }
 
-        private static void InitMap()
+        private void InitMap()
         {
             map.Draw();
             map.GenerateNewFruit();
             InitHood();
         }
 
-        private static void InitHood()
+        private  void InitHood()
         {
             _menuItems = new();
 
-            _nicMenuItem = new MenuItemLabel("Name", new Vector2D(1, 0), new Vector2D(_menuItemWidth, _menuItemHight), ConsoleColor.Red, "Игрок:" + Nic);
+            _nicMenuItem = new MenuItemLabel("Name", new Vector2D(1, 0), new Vector2D(_menuItemWidth, _menuItemHight), ConsoleColor.Red, "Игрок:" + CurrentPlayer.Name);
             _scoreMenuItem = new MenuItemLabel("Score", new Vector2D(1, WINDOWHIGHT - _menuItemHight), new Vector2D(20, 5), ConsoleColor.Red, "Очки:" + _score.ToString());
             _mapMeuItem = new MenuItemLabel("Map", new Vector2D(WINDOWWIDTH - _menuItemWidth, 0), new Vector2D(_menuItemWidth, _menuItemHight), ConsoleColor.Red, "Карта :" + map.Name);
 

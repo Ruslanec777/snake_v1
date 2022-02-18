@@ -13,29 +13,10 @@ namespace snake_v1.Models.MenuWindows
 
         public static string FileName { get; set; } = "save.txt";
 
-        private List<Player> _players;
-        List<Player> Players
-        {
-            get
-            {
-
-                // _players.
-
-                return _players;
-            }
-            set => _players = value;
-        }
-
+        public List<Player> Players { get; set; }
         public MenuLeaderBoard(Game game) : base(game)
         {
-            _fileName = AppDomain.CurrentDomain.BaseDirectory.ToString() + FileName;
 
-            if (!File.Exists(_fileName))
-            {
-                File.Create(_fileName);
-            }
-
-            Players = new();
         }
 
         public void SaveHiScorePlayer()
@@ -44,7 +25,7 @@ namespace snake_v1.Models.MenuWindows
 
             Player existPlayer = Players.FirstOrDefault(x => x.Name == Game.CurrentPlayer.Name);
 
-            if (Players.Count == 10 && Players.Last().HiScoreThisPlayer < Game.CurrentPlayer.HiScoreThisPlayer)
+            if (Players.Count == 10 && Players.Last().HiScoreThisPlayer > Game.CurrentPlayer.HiScoreThisPlayer)
             {
                 return;
             }
@@ -56,6 +37,7 @@ namespace snake_v1.Models.MenuWindows
             else if (existPlayer == null && Players.Count == 10 && Players.Last().HiScoreThisPlayer < Game.CurrentPlayer.HiScoreThisPlayer)
             {
                 Players.Remove(Players.Last());
+
                 Players.Add(Game.CurrentPlayer);
             }
 
@@ -64,9 +46,10 @@ namespace snake_v1.Models.MenuWindows
                 //TODO проверить работу
                 Players.Remove(existPlayer);
                 Players.Add(Game.CurrentPlayer);
-
             }
 
+            Players = Players.OrderByDescending(x => x.HiScoreThisPlayer).ToList();
+            Game.DataStorage.Save();
         }
 
         public override void Init()
@@ -79,9 +62,12 @@ namespace snake_v1.Models.MenuWindows
 
             MenuItems.Add(new MenuItemLabel("Header", 95, 1, ConsoleColor.Red, "Таблица лидеров"));
 
+            int count = 0;
+
             foreach (var player in Players)
             {
-                MenuItems.Add(new MenuItemLabel("MenuItem", 80, TopMargin: 1, MenuItems.Last(), ConsoleColor.Green, $"{player.Name}  {player.HiScoreThisPlayer}", Align.left));
+                MenuItems.Add(new MenuItemLabel("MenuItem", 80, TopMargin: (count == 0) ? 1 : 0, MenuItems.Last(), ConsoleColor.Green, $"{player.Name}  {player.HiScoreThisPlayer}", Align.left));
+                count++;
             }
 
             Draw();
